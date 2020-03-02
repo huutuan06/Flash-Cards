@@ -1,4 +1,4 @@
-package com.example.flashcards.application
+package com.flashcards.flashcards.application
 
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication

@@ -1,4 +1,4 @@
-package com.example.flashcards.application
+package com.flashcards.flashcards.application
 
 import android.app.Application
 import dagger.BindsInstance
