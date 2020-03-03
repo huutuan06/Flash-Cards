@@ -2,9 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
+        <import type="android.view.View"/>
         <variable
             name="loginViewModel"
             type="com.flashcards.flashcards.ui.login.LoginViewModel" />
+        <variable
+            name="loginFragment"
+            type="com.flashcards.flashcards.ui.login.LoginFragment" />
     </data>
 <RelativeLayout
 
@@ -182,7 +186,6 @@
                         android:background="#9e9e9e" />
 
                 </LinearLayout>
-
 
             </LinearLayout>
 

@@ -2,19 +2,22 @@ package com.flashcards.flashcards.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.flashcards.flashcards.R
-import javax.inject.Inject
+import com.flashcards.flashcards.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mNavHostFragment: NavHostFragment
     private lateinit var mNavController: NavController
+    private var mActivityMainBinding: ActivityMainBinding?= null
+    private var mMainModule: MainActivityModule? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        mActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         supportActionBar!!.hide()
         initNavigation()
     }

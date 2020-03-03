@@ -1,3 +1,5 @@
 package com.flashcards.flashcards.base
 
-abstract class BaseViewModel
+import androidx.lifecycle.ViewModel
+
+abstract class BaseViewModel : ViewModel()
