@@ -2,7 +2,8 @@ package com.flashcards.flashcards.application
 
 import android.app.Application
 import android.content.Context
-import com.flashcards.flashcards.ui.MainActivityModule
+import com.flashcards.flashcards.service.repository.IService
+import com.flashcards.flashcards.ui.ActivityModule
 import dagger.Binds
 import dagger.Module
 import dagger.android.AndroidInjectionModule
@@ -16,10 +17,15 @@ import javax.inject.Singleton
 @Module(includes = [
     AndroidSupportInjectionModule::class,
     AndroidInjectionModule::class,
-    MainActivityModule::class])
+    ActivityModule::class])
 abstract class AppModule {
 
     @Binds
     @Singleton
     abstract fun bindContext(application: Application): Context
+
+    @Binds
+    @Singleton
+    abstract fun bindService(service: IService): IService
+
 }

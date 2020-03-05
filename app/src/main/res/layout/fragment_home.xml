@@ -4,7 +4,7 @@
     <data>
         <variable
             name="homeViewModel"
-            type="com.flashcards.flashcards.ui.home.HomeFragment" />
+            type="com.flashcards.flashcards.ui.home.HomeViewModel" />
     </data>
 
 

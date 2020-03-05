@@ -6,7 +6,7 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
-def daggerVersion = '2.24'
+def daggerVersion = '2.26'
 
 android {
     compileSdkVersion 29

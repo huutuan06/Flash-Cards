@@ -1,20 +1,21 @@
 package com.flashcards.flashcards.ui.login
 
-import android.widget.Toast
+import android.util.Log
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
 import com.flashcards.flashcards.BR
 import com.flashcards.flashcards.R
-import com.flashcards.flashcards.databinding.FragmentLoginBinding
 import com.flashcards.flashcards.base.BaseFragment
+import com.flashcards.flashcards.databinding.FragmentLoginBinding
 import com.flashcards.flashcards.ui.MainActivity
-import kotlinx.android.synthetic.main.fragment_login.*
 import javax.inject.Inject
 
-class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
+class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(), ILogin {
 
     @Inject
-    lateinit var mainActivity: MainActivity
+    lateinit var mMainActivity: MainActivity
+
+    @Inject
+    lateinit var str: String
 
     private var mLoginViewModel: LoginViewModel? = null
 
@@ -23,11 +24,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
     }
 
     override fun initAttributes() {
-
-    }
-
-    fun onLoginClick() {
-        Toast.makeText(context, "Login Button", Toast.LENGTH_SHORT).show()
+        mLoginViewModel!!.setInterface(this)
     }
 
     override fun getBindingVariable(): Int {
@@ -38,4 +35,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
         mLoginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         return mLoginViewModel!!
     }
+
+    override fun login() {
+        Log.d("test",str)
+        mMainActivity.mNavController.popBackStack()
+        mMainActivity.mNavController.navigate(R.id.homeFragment)
+    }
+
 }

@@ -15,6 +15,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     }
 
     override fun initAttributes() {
+        mHomeViewModel!!.getAllVocabularies()
     }
 
     override fun getBindingVariable(): Int {
