@@ -1,12 +1,12 @@
 package com.flashcards.flashcards.ui.login
 
-import android.util.Log
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import com.flashcards.flashcards.BR
 import com.flashcards.flashcards.R
 import com.flashcards.flashcards.base.BaseFragment
 import com.flashcards.flashcards.databinding.FragmentLoginBinding
 import com.flashcards.flashcards.ui.MainActivity
+import com.flashcards.flashcards.viewmodel.ViewModelProviderFactory
 import javax.inject.Inject
 
 class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(), ILogin {
@@ -15,7 +15,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(), ILog
     lateinit var mMainActivity: MainActivity
 
     @Inject
-    lateinit var str: String
+    lateinit var viewModelProviderFactory: ViewModelProviderFactory
 
     private var mLoginViewModel: LoginViewModel? = null
 
@@ -32,12 +32,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(), ILog
     }
 
     override fun getViewModel(): LoginViewModel {
-        mLoginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        mLoginViewModel = ViewModelProviders.of(this, viewModelProviderFactory).get(LoginViewModel::class.java)
         return mLoginViewModel!!
     }
 
     override fun login() {
-        Log.d("test",str)
         mMainActivity.mNavController.popBackStack()
         mMainActivity.mNavController.navigate(R.id.homeFragment)
     }

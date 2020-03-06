@@ -1,13 +1,14 @@
-package com.flashcards.flashcards.ui.home
+package com.flashcards.flashcards.di.home
 
-import com.flashcards.flashcards.ui.FragmentScope
+import com.flashcards.flashcards.di.scope.FragmentScope
+import com.flashcards.flashcards.ui.home.HomeFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
 @Module
 abstract class HomeModule {
 
-//    @FragmentScope
+    @FragmentScope
     @ContributesAndroidInjector
     abstract fun provideHomeFragment(): HomeFragment
 }

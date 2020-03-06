@@ -7,11 +7,13 @@ import androidx.navigation.fragment.NavHostFragment
 import com.flashcards.flashcards.R
 import com.flashcards.flashcards.databinding.ActivityMainBinding
 import dagger.android.support.DaggerAppCompatActivity
+import javax.inject.Inject
 
 class MainActivity : DaggerAppCompatActivity() {
 
     private lateinit var mNavHostFragment: NavHostFragment
     lateinit var mNavController: NavController
+
     private var mActivityMainBinding: ActivityMainBinding?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {

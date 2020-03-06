@@ -1,9 +1,8 @@
-package com.flashcards.flashcards.application
+package com.flashcards.flashcards.di
 
 import android.app.Application
 import android.content.Context
 import com.flashcards.flashcards.service.repository.IService
-import com.flashcards.flashcards.ui.ActivityModule
 import dagger.Binds
 import dagger.Module
 import dagger.android.AndroidInjectionModule
@@ -14,10 +13,7 @@ import javax.inject.Singleton
  * Created by Nguyen Huu Tuan on 26/02/2020.
  */
 
-@Module(includes = [
-    AndroidSupportInjectionModule::class,
-    AndroidInjectionModule::class,
-    ActivityModule::class])
+@Module
 abstract class AppModule {
 
     @Binds
