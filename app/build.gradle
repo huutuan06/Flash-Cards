@@ -6,8 +6,6 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
-def daggerVersion = '2.26'
-
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.0"
@@ -48,6 +46,15 @@ kapt {
     generateStubs = true
 }
 
+def dagger_version = "2.26"
+def glide_version = "4.11.0"
+def material_version = "1.1.0"
+def retrofit_version = "2.5.0"
+def rxjava_version = "2.1.0"
+def rxcalladapter_version = "2.5.0"
+def reactivestreams_version = "1.1.1"
+def lifecycle_version = '2.2.0'
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -58,43 +65,18 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    //RecyclerView, CardView
-    //noinspection GradleCompatible
-    implementation 'com.android.support:design:28.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'com.google.android.material:material:1.1.0'
-    //noinspection GradleCompatible
-    implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
 
-    //CardView, RecyclerView
-    implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.2.0-alpha01'
+    implementation "com.google.dagger:dagger-android:$dagger_version"
+    implementation "com.google.dagger:dagger-android-support:$dagger_version" // if you use the support libraries
+    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
 
-    //Dagger 2
-    implementation "com.google.dagger:dagger:$daggerVersion"
-    implementation "com.google.dagger:dagger-android:$daggerVersion"
-    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
-    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
-
-    /* Dagger2 - default dependency */
-    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
-
-    // Http
-    implementation 'com.squareup.okhttp3:okhttp:4.2.2'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.2'
-
-    // Retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.6.2'
-    implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
-    implementation 'com.squareup.retrofit2:converter-scalars:2.6.2'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.2'
-
-    // Rx java
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.9'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    //    def material_version = "1.0.0-rc02"
+    implementation "com.google.android.material:material:$material_version"
 
     //Glide
-    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    implementation "com.github.bumptech.glide:glide:$glide_version"
     //noinspection GradleCompatible
     implementation 'com.android.support:support-v4:23.1.1'
 
@@ -109,10 +91,19 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
-    // Serialize Api
-    implementation 'com.google.code.gson:gson:2.8.6'
-
-    //ViewModel and Livedata
-    def lifecycle_version = '2.2.0'
+    // ViewModel and LiveData
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    //RxJava
+    implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
+
+    //Rx-Retrofit call adapter
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rxcalladapter_version"
+
+    // Reactive Streams (convert Observable to LiveData)
+    implementation "android.arch.lifecycle:reactivestreams:$reactivestreams_version"
 }

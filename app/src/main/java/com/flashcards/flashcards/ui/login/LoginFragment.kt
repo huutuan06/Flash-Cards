@@ -1,15 +1,18 @@
 package com.flashcards.flashcards.ui.login
 
-import androidx.lifecycle.ViewModelProviders
+import android.view.View
+import android.widget.LinearLayout
+import androidx.lifecycle.ViewModelProvider
 import com.flashcards.flashcards.BR
 import com.flashcards.flashcards.R
 import com.flashcards.flashcards.base.BaseFragment
 import com.flashcards.flashcards.databinding.FragmentLoginBinding
 import com.flashcards.flashcards.ui.MainActivity
 import com.flashcards.flashcards.viewmodel.ViewModelProviderFactory
+import kotlinx.android.synthetic.main.fragment_login.*
 import javax.inject.Inject
 
-class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(), ILogin {
+class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(), View.OnClickListener {
 
     @Inject
     lateinit var mMainActivity: MainActivity
@@ -24,7 +27,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(), ILog
     }
 
     override fun initAttributes() {
-        mLoginViewModel!!.setInterface(this)
+        linear_login.setOnClickListener(this)
     }
 
     override fun getBindingVariable(): Int {
@@ -32,13 +35,16 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(), ILog
     }
 
     override fun getViewModel(): LoginViewModel {
-        mLoginViewModel = ViewModelProviders.of(this, viewModelProviderFactory).get(LoginViewModel::class.java)
+        mLoginViewModel = ViewModelProvider(this, viewModelProviderFactory).get(LoginViewModel::class.java)
         return mLoginViewModel!!
     }
 
-    override fun login() {
+    fun login() {
         mMainActivity.mNavController.popBackStack()
         mMainActivity.mNavController.navigate(R.id.homeFragment)
     }
 
+    override fun onClick(v: View?) {
+        login()
+    }
 }

@@ -6,18 +6,12 @@ import com.flashcards.flashcards.service.repository.IService
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class HomeViewModel : BaseViewModel() {
+class HomeViewModel @Inject constructor(): BaseViewModel() {
 
     @Inject
-    lateinit var service: IService
+    lateinit var iService: IService
 
     fun getAllVocabularies(){
-//        disposable.add(service.getAllVocabularies()
-//            .subscribeOn(Schedulers.newThread())
-//            .doOnComplete{
-//                Log.d("Complete", "Complete")
-//            }
-//            .subscribe())
-
+        iService.getAllVocabularies()
     }
 }

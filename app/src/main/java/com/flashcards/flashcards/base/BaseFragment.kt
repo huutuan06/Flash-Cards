@@ -25,7 +25,6 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFrag
     ): View? {
         mViewDataBinding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
         mRootView = mViewDataBinding.root
-        initAttributes()
         return mRootView
     }
 
@@ -39,6 +38,8 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFrag
         mViewDataBinding.setVariable(getBindingVariable(), mViewModel)
         mViewDataBinding.lifecycleOwner = this
         mViewDataBinding.executePendingBindings()
+        initAttributes()
+
     }
 
     @LayoutRes

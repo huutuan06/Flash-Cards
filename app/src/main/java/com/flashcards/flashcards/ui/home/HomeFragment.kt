@@ -14,12 +14,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         return R.layout.fragment_home
     }
 
-    override fun initAttributes() {
-        mHomeViewModel!!.getAllVocabularies()
-    }
-
     override fun getBindingVariable(): Int {
         return BR.homeViewModel
+    }
+
+    override fun initAttributes() {
+        mHomeViewModel!!.getAllVocabularies()
     }
 
     override fun getViewModel(): HomeViewModel {
