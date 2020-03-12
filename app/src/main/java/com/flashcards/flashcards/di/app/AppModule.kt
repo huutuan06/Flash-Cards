@@ -1,13 +1,8 @@
 package com.flashcards.flashcards.di.app
 
-import android.app.Application
-import android.content.Context
 import com.flashcards.flashcards.service.repository.IService
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
-import dagger.android.AndroidInjectionModule
-import dagger.android.support.AndroidSupportInjectionModule
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -35,5 +30,4 @@ class AppModule {
     fun provideIService(retrofit: Retrofit): IService {
         return retrofit.create(IService::class.java)
     }
-
 }

@@ -16,7 +16,6 @@ import javax.inject.Singleton
 @Module
 abstract class ActivityBuilderModule {
 
-
     @ActivityScope
     @ContributesAndroidInjector(modules = [HomeModule::class, LoginModule::class])
     abstract fun contributeMainActivity() : MainActivity

@@ -5,6 +5,7 @@ import com.flashcards.flashcards.viewmodel.ViewModelProviderFactory
 import dagger.Binds
 import dagger.Module
 
+
 @Module
 abstract class ViewModelFactoryModule {
 

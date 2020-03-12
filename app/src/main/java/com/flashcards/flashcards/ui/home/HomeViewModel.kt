@@ -3,15 +3,12 @@ package com.flashcards.flashcards.ui.home
 import android.util.Log
 import com.flashcards.flashcards.base.BaseViewModel
 import com.flashcards.flashcards.service.repository.IService
-import io.reactivex.schedulers.Schedulers
+import retrofit2.Retrofit
 import javax.inject.Inject
 
-class HomeViewModel @Inject constructor(): BaseViewModel() {
+class HomeViewModel @Inject constructor(var iService: IService) : BaseViewModel() {
 
-    @Inject
-    lateinit var iService: IService
-
-    fun getAllVocabularies(){
+    fun getAllVocabularies() {
         iService.getAllVocabularies()
     }
 }

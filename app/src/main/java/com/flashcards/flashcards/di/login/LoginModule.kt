@@ -13,7 +13,7 @@ import dagger.multibindings.IntoMap
 @Module
 abstract class LoginModule {
 
-//    @FragmentScope
+    @FragmentScope
     @ContributesAndroidInjector(modules = [LoginViewModelModule::class])
     abstract fun provideLoginFragment(): LoginFragment
 
