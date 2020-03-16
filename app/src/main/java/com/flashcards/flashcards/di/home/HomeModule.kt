@@ -1,7 +1,9 @@
 package com.flashcards.flashcards.di.home
 
 import com.flashcards.flashcards.di.scope.FragmentScope
+import com.flashcards.flashcards.ui.home.CardAdapter
 import com.flashcards.flashcards.ui.home.HomeFragment
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.android.ContributesAndroidInjector
@@ -12,4 +14,10 @@ abstract class HomeModule {
     @FragmentScope
     @ContributesAndroidInjector(modules = [HomeViewModelModule::class])
     abstract fun provideHomeFragment(): HomeFragment
+
+    companion object {
+
+        @Provides
+        fun bindsCardAdapter() = CardAdapter()
+    }
 }

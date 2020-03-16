@@ -65,6 +65,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    //Dagger 2
     implementation "com.google.dagger:dagger:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
 
@@ -72,7 +73,7 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:$dagger_version" // if you use the support libraries
     kapt "com.google.dagger:dagger-android-processor:$dagger_version"
 
-    //    def material_version = "1.0.0-rc02"
+    //def material_version = "1.0.0-rc02"
     implementation "com.google.android.material:material:$material_version"
 
     //Glide
@@ -80,7 +81,7 @@ dependencies {
     //noinspection GradleCompatible
     implementation 'com.android.support:support-v4:23.1.1'
 
-    // Serialize Api
+    //Serialize Api
     implementation 'com.google.code.gson:gson:2.8.6'
 
     //Room
@@ -94,16 +95,26 @@ dependencies {
     // ViewModel and LiveData
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
 
+    // Http
+    implementation 'com.squareup.okhttp3:okhttp:4.2.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.2'
+
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
     //RxJava
     implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
     //Rx-Retrofit call adapter
     implementation "com.squareup.retrofit2:adapter-rxjava2:$rxcalladapter_version"
 
     // Reactive Streams (convert Observable to LiveData)
     implementation "android.arch.lifecycle:reactivestreams:$reactivestreams_version"
+
+    //LiveData
+    implementation "android.arch.lifecycle:extensions:1.1.1"
+    //noinspection LifecycleAnnotationProcessorWithJava8
+    annotationProcessor "android.arch.lifecycle:compiler:1.1.1"
 }
