@@ -1,6 +1,8 @@
 package com.flashcards.flashcards.di.home
 
 import com.flashcards.flashcards.di.scope.FragmentScope
+import com.flashcards.flashcards.ui.MainActivity
+import com.flashcards.flashcards.ui.dialog.LoadingDialog
 import com.flashcards.flashcards.ui.home.CardAdapter
 import com.flashcards.flashcards.ui.home.HomeFragment
 import dagger.Binds
@@ -16,8 +18,7 @@ abstract class HomeModule {
     abstract fun provideHomeFragment(): HomeFragment
 
     companion object {
-
         @Provides
-        fun bindsCardAdapter() = CardAdapter()
+        fun provideCardAdapter() = CardAdapter()
     }
 }

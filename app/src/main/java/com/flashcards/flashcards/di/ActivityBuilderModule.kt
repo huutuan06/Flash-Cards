@@ -5,6 +5,7 @@ import com.flashcards.flashcards.ui.MainActivity
 import com.flashcards.flashcards.di.home.HomeModule
 import com.flashcards.flashcards.di.login.LoginModule
 import com.flashcards.flashcards.service.repository.IService
+import com.flashcards.flashcards.ui.MainModule
 import com.flashcards.flashcards.ui.dialog.LoadingDialog
 import dagger.Binds
 import dagger.Module
@@ -19,7 +20,7 @@ import javax.inject.Singleton
 abstract class ActivityBuilderModule {
 
     @ActivityScope
-    @ContributesAndroidInjector(modules = [HomeModule::class, LoginModule::class])
+    @ContributesAndroidInjector(modules = [MainModule::class, HomeModule::class, LoginModule::class])
     abstract fun contributeMainActivity() : MainActivity
 
 }

@@ -16,30 +16,6 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(private var iService: IService) : BaseViewModel() {
 
     var mVocabularies: MediatorLiveData<List<Vocabulary>>? = null
-//
-//    fun getAllVocabularies() {
-//        disposable.add(iService.getAllVocabularies()
-//            .subscribeOn(Schedulers.io())
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .doOnError {
-//                Log.e("HomeViewModel", "Something went wrong!")
-//            }
-//            .subscribeWith(object : DisposableObserver<List<Vocabulary>>() {
-//                override fun onComplete() {
-//                    Log.d("HomeViewModel", "Complete")
-//                }
-//
-//                override fun onNext(value: List<Vocabulary>) {
-//                    Log.d("HomeViewModel", value.toString())
-//                }
-//
-//                override fun onError(e: Throwable) {
-//                    e.printStackTrace()
-//                    Log.e("HomeViewModel", "Error!!!")
-//                }
-//            })
-//        )
-//    }
 
     fun observeVocabularies(): LiveData<List<Vocabulary>> {
         if (mVocabularies == null) {
@@ -67,13 +43,6 @@ class HomeViewModel @Inject constructor(private var iService: IService) : BaseVi
                     }
                 })
             )
-//            val source: LiveData<List<Vocabulary>> = LiveDataReactiveStreams.fromPublisher {
-//                iService.getAllVocabularies()
-//                    .subscribeOn(Schedulers.io())
-//            }
-//            mVocabularies!!.addSource(source) { vocabularies ->
-//                mVocabularies!!.value = vocabularies
-//            }
         }
         return mVocabularies!!
     }

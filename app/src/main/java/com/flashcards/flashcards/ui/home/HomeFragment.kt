@@ -1,14 +1,12 @@
 package com.flashcards.flashcards.ui.home
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.flashcards.flashcards.BR
 import com.flashcards.flashcards.R
-import com.flashcards.flashcards.databinding.FragmentHomeBinding
 import com.flashcards.flashcards.base.BaseFragment
+import com.flashcards.flashcards.databinding.FragmentHomeBinding
 import com.flashcards.flashcards.service.model.Vocabulary
 import com.flashcards.flashcards.ui.dialog.LoadingDialog
 import com.flashcards.flashcards.viewmodel.ViewModelProviderFactory
@@ -19,16 +17,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     private var mHomeViewModel: HomeViewModel? = null
 
-    private var loadingDialog: LoadingDialog? = null
-
     @Inject
     lateinit var viewModelProviderFactory: ViewModelProviderFactory
 
     @Inject
     lateinit var adapter: CardAdapter
 
-//    @Inject
-////    lateinit var loadingDialog: LoadingDialog
+    @Inject
+    lateinit var loadingDialog: LoadingDialog
 
     override fun getLayoutId(): Int {
         return R.layout.fragment_home
@@ -42,8 +38,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         initRecyclerView()
         mHomeViewModel!!.observeVocabularies()
         mHomeViewModel!!.mVocabularies!!.observe(this,changeObserver)
-        loadingDialog = LoadingDialog(activity!!)
-        loadingDialog!!.show()
+        loadingDialog.show()
 
     }
 
@@ -56,7 +51,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     private val changeObserver = Observer<List<Vocabulary>> { vocabularies ->
         vocabularies?.let {
             adapter.setCards(vocabularies as ArrayList<Vocabulary>)
-            loadingDialog!!.dismiss()
+            loadingDialog.dismiss()
         }
     }
 
