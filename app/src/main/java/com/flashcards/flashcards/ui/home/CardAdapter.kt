@@ -26,7 +26,7 @@ class CardAdapter: RecyclerView.Adapter<CardAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-//        Glide.with(mainActivity).load(cardList[position].image).into(holder.imgCard)
+        Glide.with(holder.itemView.context).load(cardList[position].image).into(holder.imgCard)
         holder.txtEnglishTitle.text = cardList[position].englishTitle.toString()
         holder.txtVietnameseTitle.text = cardList[position].vietnameseTitle.toString()
         holder.txtType.text = cardList[position].type.toString()

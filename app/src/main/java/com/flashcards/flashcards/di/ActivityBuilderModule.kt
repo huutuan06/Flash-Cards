@@ -5,6 +5,8 @@ import com.flashcards.flashcards.ui.MainActivity
 import com.flashcards.flashcards.di.home.HomeModule
 import com.flashcards.flashcards.di.login.LoginModule
 import com.flashcards.flashcards.service.repository.IService
+import com.flashcards.flashcards.ui.dialog.LoadingDialog
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.android.ContributesAndroidInjector
