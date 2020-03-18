@@ -1,10 +1,8 @@
 package com.flashcards.flashcards.ui.login
 
-import android.util.Log
 import com.flashcards.flashcards.base.BaseViewModel
+import javax.inject.Inject
 
-class LoginViewModel : BaseViewModel() {
-    fun onLoginClick() {
-        Log.d("Test","Test")
-    }
+class LoginViewModel @Inject constructor(): BaseViewModel() {
+
 }

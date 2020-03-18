@@ -8,13 +8,17 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.flashcards.flashcards.ui.login.LoginFragment"
-        android:label="Blank"
-        tools:layout="@layout/fragment_home" />
+        android:label="loginFragment"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.flashcards.flashcards.ui.home.HomeFragment"
-        android:label="Blank"
+        android:label="homeFragment"
         tools:layout="@layout/fragment_home" />
 
 </navigation>

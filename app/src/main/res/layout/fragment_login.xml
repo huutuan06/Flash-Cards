@@ -2,9 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
+        <import type="android.view.View"/>
         <variable
             name="loginViewModel"
             type="com.flashcards.flashcards.ui.login.LoginViewModel" />
+        <variable
+            name="loginFragment"
+            type="com.flashcards.flashcards.ui.login.LoginFragment" />
     </data>
 <RelativeLayout
 
@@ -183,7 +187,6 @@
 
                 </LinearLayout>
 
-
             </LinearLayout>
 
         </LinearLayout>
@@ -197,8 +200,7 @@
             android:layout_marginBottom="16.7dp"
             android:background="@drawable/half_blue_roundshape"
             android:gravity="center"
-            android:orientation="vertical"
-            android:onClick="@{() -> loginViewModel.onLoginClick()}">
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
