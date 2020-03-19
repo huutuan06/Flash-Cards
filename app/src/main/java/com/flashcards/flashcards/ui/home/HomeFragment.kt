@@ -11,6 +11,10 @@ import com.flashcards.flashcards.service.model.Vocabulary
 import com.flashcards.flashcards.ui.dialog.LoadingDialog
 import com.flashcards.flashcards.viewmodel.ViewModelProviderFactory
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
@@ -36,10 +40,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     override fun initAttributes() {
         initRecyclerView()
-        mHomeViewModel!!.observeVocabularies()
-        mHomeViewModel!!.mVocabularies!!.observe(this,changeObserver)
+        mHomeViewModel!!.data.observe(this, changeObserver)
         loadingDialog.show()
-
     }
 
     override fun getViewModel(): HomeViewModel {

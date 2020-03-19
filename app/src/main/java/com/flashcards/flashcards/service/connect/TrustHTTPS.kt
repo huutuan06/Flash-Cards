@@ -12,7 +12,7 @@ import javax.net.ssl.*
  */
 class TrustHTTPS @Inject constructor(private val mClient: OkHttpClient.Builder) {
 
-    fun intializeCertificate() {
+    fun initializeCertificate() {
         val trustAllCerts = arrayOf<TrustManager>(object : X509TrustManager {
             @SuppressLint("TrustAllX509TrustManager")
             override fun checkClientTrusted(
@@ -48,7 +48,5 @@ class TrustHTTPS @Inject constructor(private val mClient: OkHttpClient.Builder) 
         } catch (ex: Exception) {
             ex.printStackTrace()
         }
-
     }
-
 }

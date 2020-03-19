@@ -4,6 +4,7 @@ import com.flashcards.flashcards.service.connect.TrustHTTPS
 import com.flashcards.flashcards.service.repository.IService
 import com.flashcards.flashcards.ui.MainActivity
 import com.flashcards.flashcards.ui.dialog.LoadingDialog
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -44,15 +45,33 @@ class AppModule {
         return TrustHTTPS(client)
     }
 
+    /**
+     * For RxJava
+     * */
+//    @Singleton
+//    @Provides
+//    internal fun provideRetrofitInstance(trustHTTPS: TrustHTTPS,client: OkHttpClient.Builder): Retrofit {
+//        trustHTTPS.intializeCertificate()
+//        return Retrofit.Builder()
+//            .baseUrl("https://shawn-movie-rental.herokuapp.com/")
+//            .client(client.build())
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+//            .build()
+//    }
+
+    /**
+     * For Coroutines
+     * */
     @Singleton
     @Provides
     internal fun provideRetrofitInstance(trustHTTPS: TrustHTTPS,client: OkHttpClient.Builder): Retrofit {
-        trustHTTPS.intializeCertificate()
+        trustHTTPS.initializeCertificate()
         return Retrofit.Builder()
             .baseUrl("https://shawn-movie-rental.herokuapp.com/")
             .client(client.build())
             .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .build()
     }
 
