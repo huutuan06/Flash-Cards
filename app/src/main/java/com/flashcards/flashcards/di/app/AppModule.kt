@@ -45,24 +45,6 @@ class AppModule {
         return TrustHTTPS(client)
     }
 
-    /**
-     * For RxJava
-     * */
-//    @Singleton
-//    @Provides
-//    internal fun provideRetrofitInstance(trustHTTPS: TrustHTTPS,client: OkHttpClient.Builder): Retrofit {
-//        trustHTTPS.intializeCertificate()
-//        return Retrofit.Builder()
-//            .baseUrl("https://shawn-movie-rental.herokuapp.com/")
-//            .client(client.build())
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-//            .build()
-//    }
-
-    /**
-     * For Coroutines
-     * */
     @Singleton
     @Provides
     internal fun provideRetrofitInstance(trustHTTPS: TrustHTTPS,client: OkHttpClient.Builder): Retrofit {

@@ -8,9 +8,6 @@ import retrofit2.http.GET
 
 interface IService {
 
-    /**
-     *For Coroutines
-     */
     @GET("api/cards")
     fun getAllVocabulariesAsync() : Deferred<List<Vocabulary>>
 }
