@@ -13,39 +13,6 @@ class HomeViewModel @Inject constructor(private var iService: IService) : BaseVi
     var mVocabularies: MediatorLiveData<List<Vocabulary>>? = null
 
     /**
-     * RxJava
-     */
-//    fun observeVocabularies(): LiveData<List<Vocabulary>> {
-//        if (mVocabularies == null) {
-//            mVocabularies = MediatorLiveData()
-//
-//            disposable.add(iService.getAllVocabularies()
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .doOnError {
-//                    Log.e("HomeViewModel", "Something went wrong!")
-//                }
-//                .subscribeWith(object : DisposableObserver<List<Vocabulary>>() {
-//                    override fun onComplete() {
-//                        Log.d("HomeViewModel", "Complete")
-//                    }
-//
-//                    override fun onNext(value: List<Vocabulary>) {
-//                        Log.d("HomeViewModel", value.toString())
-//                        mVocabularies!!.value = value
-//                    }
-//
-//                    override fun onError(e: Throwable) {
-//                        e.printStackTrace()
-//                        Log.e("HomeViewModel", "Error!!!")
-//                    }
-//                })
-//            )
-//        }
-//        return mVocabularies!!
-//    }
-
-    /**
      * Coroutines
      */
     val data: LiveData<List<Vocabulary>> = liveData {

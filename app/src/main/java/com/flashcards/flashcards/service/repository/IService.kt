@@ -9,12 +9,6 @@ import retrofit2.http.GET
 interface IService {
 
     /**
-     *For RxJava
-     */
-//    @GET("api/cards")
-//    fun getAllVocabularies() : Observable<List<Vocabulary>>
-
-    /**
      *For Coroutines
      */
     @GET("api/cards")
