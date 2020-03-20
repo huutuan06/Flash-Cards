@@ -7,4 +7,5 @@ This project using:
 - Livedata
 - Databinding
 - Coroutine
-- RxJava (just only in RxJava branch)
+- Firebase Analytics
+- Firebase Crashlytics
