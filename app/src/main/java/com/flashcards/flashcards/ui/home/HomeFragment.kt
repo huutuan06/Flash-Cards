@@ -8,8 +8,12 @@ import com.flashcards.flashcards.R
 import com.flashcards.flashcards.base.BaseFragment
 import com.flashcards.flashcards.databinding.FragmentHomeBinding
 import com.flashcards.flashcards.service.model.Vocabulary
+import com.flashcards.flashcards.ui.MainActivity
 import com.flashcards.flashcards.ui.dialog.LoadingDialog
+import com.flashcards.flashcards.util.Constants
+import com.flashcards.flashcards.util.FlashCardsAnalytics
 import com.flashcards.flashcards.viewmodel.ViewModelProviderFactory
+import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -30,6 +34,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     @Inject
     lateinit var loadingDialog: LoadingDialog
 
+    @Inject
+    lateinit var mMainActivity: MainActivity
+
+    @Inject
+    lateinit var mFirebaseAnalytics: FirebaseAnalytics
+
+    @Inject
+    lateinit var mFlashCardsAnalytics: FlashCardsAnalytics
+
     override fun getLayoutId(): Int {
         return R.layout.fragment_home
     }
@@ -39,6 +52,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     }
 
     override fun initAttributes() {
+        mFlashCardsAnalytics.reportScreen(mFirebaseAnalytics, mMainActivity, Constants.HOME_SCREEN)
         initRecyclerView()
         mHomeViewModel!!.data.observe(this, changeObserver)
         loadingDialog.show()

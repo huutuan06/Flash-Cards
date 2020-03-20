@@ -8,7 +8,10 @@ import com.flashcards.flashcards.R
 import com.flashcards.flashcards.base.BaseFragment
 import com.flashcards.flashcards.databinding.FragmentLoginBinding
 import com.flashcards.flashcards.ui.MainActivity
+import com.flashcards.flashcards.util.Constants
+import com.flashcards.flashcards.util.FlashCardsAnalytics
 import com.flashcards.flashcards.viewmodel.ViewModelProviderFactory
+import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.android.synthetic.main.fragment_login.*
 import javax.inject.Inject
 
@@ -20,6 +23,12 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(), View
     @Inject
     lateinit var viewModelProviderFactory: ViewModelProviderFactory
 
+    @Inject
+    lateinit var mFirebaseAnalytics: FirebaseAnalytics
+
+    @Inject
+    lateinit var mFlashCardsAnalytics: FlashCardsAnalytics
+
     private var mLoginViewModel: LoginViewModel? = null
 
     override fun getLayoutId(): Int {
@@ -27,6 +36,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(), View
     }
 
     override fun initAttributes() {
+        mFlashCardsAnalytics.reportScreen(mFirebaseAnalytics, mMainActivity, Constants.LOGIN_SCREEN)
         linear_login.setOnClickListener(this)
     }
 

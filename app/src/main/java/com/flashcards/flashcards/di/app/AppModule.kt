@@ -1,10 +1,15 @@
 package com.flashcards.flashcards.di.app
 
+import android.app.Application
+import android.content.Context
 import com.flashcards.flashcards.service.connect.TrustHTTPS
 import com.flashcards.flashcards.service.repository.IService
 import com.flashcards.flashcards.ui.MainActivity
 import com.flashcards.flashcards.ui.dialog.LoadingDialog
+import com.flashcards.flashcards.util.FlashCardsAnalytics
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -21,6 +26,10 @@ import javax.inject.Singleton
 
 @Module
 class AppModule {
+
+    @Provides
+    @Singleton
+    internal fun bindContext(application: Application): Context = application.applicationContext
 
     @Singleton
     @Provides
@@ -62,5 +71,15 @@ class AppModule {
     fun provideIService(retrofit: Retrofit): IService {
         return retrofit.create(IService::class.java)
     }
+
+    @Provides
+    @Singleton
+    internal fun provideFirebaseAnalytics(context: Context) : FirebaseAnalytics {
+        return FirebaseAnalytics.getInstance(context)
+    }
+
+    @Singleton
+    @Provides
+    internal fun provideFlashCardsAnalytics() : FlashCardsAnalytics = FlashCardsAnalytics()
 
 }

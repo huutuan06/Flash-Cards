@@ -6,6 +6,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.flashcards.flashcards.R
 import com.flashcards.flashcards.databinding.ActivityMainBinding
+import com.google.firebase.analytics.FirebaseAnalytics
 import dagger.android.support.DaggerAppCompatActivity
 
 class MainActivity : DaggerAppCompatActivity() {
