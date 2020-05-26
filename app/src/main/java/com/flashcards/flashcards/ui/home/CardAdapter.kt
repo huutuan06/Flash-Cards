@@ -14,24 +14,24 @@ import kotlinx.android.synthetic.main.item_card.view.*
 
 class CardAdapter: RecyclerView.Adapter<CardAdapter.ViewHolder>() {
 
-    private var cardList = ArrayList<Vocabulary>()
+    private var arrVocabularies = ArrayList<Vocabulary>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_card, parent, false))
     }
 
-    override fun getItemCount(): Int {
-        return cardList.size
-    }
+    override fun getItemCount() = arrVocabularies.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        Glide.with(holder.itemView.context).load(cardList[position].image).into(holder.imgCard)
-        holder.txtEnglishTitle.text = cardList[position].englishTitle.toString()
-        holder.txtVietnameseTitle.text = cardList[position].vietnameseTitle.toString()
-        holder.txtType.text = cardList[position].type.toString()
-        holder.txtContext.text = cardList[position].context.toString()
-        holder.txtExample.text = cardList[position].example.toString()
+        Glide.with(holder.itemView.context).load(arrVocabularies[position].image).into(holder.imgCard)
+        holder.apply {
+            txtEnglishTitle.text = arrVocabularies[position].englishTitle.toString()
+            txtVietnameseTitle.text = arrVocabularies[position].vietnameseTitle.toString()
+            txtType.text = arrVocabularies[position].type.toString()
+            txtContext.text = arrVocabularies[position].context.toString()
+            txtExample.text = arrVocabularies[position].example.toString()
+        }
     }
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
@@ -45,7 +45,7 @@ class CardAdapter: RecyclerView.Adapter<CardAdapter.ViewHolder>() {
     }
 
     fun setCards(vocabularies: ArrayList<Vocabulary>){
-        this.cardList = vocabularies
+        this.arrVocabularies = vocabularies
         notifyDataSetChanged()
     }
 }

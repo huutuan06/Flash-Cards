@@ -22,9 +22,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(), View
 
     private var mLoginViewModel: LoginViewModel? = null
 
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_login
-    }
+    override fun getLayoutId() = R.layout.fragment_login
 
     override fun initAttributes() {
         linear_login.setOnClickListener(this)

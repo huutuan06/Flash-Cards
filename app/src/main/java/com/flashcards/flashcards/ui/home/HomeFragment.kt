@@ -7,7 +7,6 @@ import com.flashcards.flashcards.BR
 import com.flashcards.flashcards.R
 import com.flashcards.flashcards.base.BaseFragment
 import com.flashcards.flashcards.databinding.FragmentHomeBinding
-import com.flashcards.flashcards.service.model.Vocabulary
 import com.flashcards.flashcards.ui.dialog.LoadingDialog
 import com.flashcards.flashcards.viewmodel.ViewModelProviderFactory
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -19,9 +18,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     @Inject
     lateinit var viewModelProviderFactory: ViewModelProviderFactory
-
-    @Inject
-    lateinit var adapter: CardAdapter
 
     @Inject
     lateinit var loadingDialog: LoadingDialog
@@ -36,10 +32,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     override fun initAttributes() {
         initRecyclerView()
-        mHomeViewModel!!.observeVocabularies()
-        mHomeViewModel!!.mVocabularies!!.observe(this,changeObserver)
+        mHomeViewModel!!.getVocabulary()
         loadingDialog.show()
+        listenVocabularies()
 
+    }
+
+    private fun  listenVocabularies() {
+        mHomeViewModel!!.getVocabularyReponseMessagge()!!.observe(this, Observer {
+
+        })
+        mHomeViewModel!!.getErrorReponseMessage()!!.observe(this, Observer {
+
+        })
     }
 
     override fun getViewModel(): HomeViewModel {
@@ -48,16 +53,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         return mHomeViewModel!!
     }
 
-    private val changeObserver = Observer<List<Vocabulary>> { vocabularies ->
-        vocabularies?.let {
-            adapter.setCards(vocabularies as ArrayList<Vocabulary>)
-            loadingDialog.dismiss()
-        }
-    }
-
     private fun initRecyclerView() {
-        recycler_view_vocabularies.hasFixedSize()
-        recycler_view_vocabularies.layoutManager = LinearLayoutManager(context)
-        recycler_view_vocabularies.adapter = adapter
+        recycler_view_vocabularies.apply {
+            hasFixedSize()
+            layoutManager = LinearLayoutManager(context)
+            adapter = adapter
+        }
     }
 }
