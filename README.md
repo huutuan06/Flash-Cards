@@ -9,3 +9,7 @@ This project using:
 - Coroutine
 - Firebase Analytics
 - Firebase Crashlytics
+
+*** For get data from server:
+- Master branch use Rx 
+- Dev branch use cotoutine
