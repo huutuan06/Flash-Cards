@@ -9,12 +9,9 @@ import com.flashcards.flashcards.base.BaseFragment
 import com.flashcards.flashcards.databinding.FragmentHomeBinding
 import com.flashcards.flashcards.ui.dialog.LoadingDialog
 import com.flashcards.flashcards.viewmodel.ViewModelProviderFactory
-import kotlinx.android.synthetic.main.fragment_home.*
 import javax.inject.Inject
 
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
-
-    private var mHomeViewModel: HomeViewModel? = null
 
     @Inject
     lateinit var viewModelProviderFactory: ViewModelProviderFactory
@@ -30,34 +27,30 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         return BR.homeViewModel
     }
 
-    override fun initAttributes() {
+    override fun initView() {
         initRecyclerView()
-        mHomeViewModel!!.getVocabulary()
-        loadingDialog.show()
-        listenVocabularies()
-
-    }
-
-    private fun  listenVocabularies() {
-        mHomeViewModel!!.getVocabularyReponseMessagge()!!.observe(this, Observer {
-
-        })
-        mHomeViewModel!!.getErrorReponseMessage()!!.observe(this, Observer {
-
+        mViewModel.isLoading.observe(this, Observer {
+            if (it) {
+                loadingDialog.show()
+            } else {
+                loadingDialog.dismiss()
+            }
         })
     }
+
+    override fun initAttributes() {}
 
     override fun getViewModel(): HomeViewModel {
-        mHomeViewModel =
-            ViewModelProvider(this, viewModelProviderFactory).get(HomeViewModel::class.java)
-        return mHomeViewModel!!
+        return ViewModelProvider(this, viewModelProviderFactory).get(HomeViewModel::class.java)
     }
 
     private fun initRecyclerView() {
-        recycler_view_vocabularies.apply {
+        val cardAdapter = CardAdapter(this, mViewModel.listVocabularies)
+
+        binding.recyclerViewVocabularies.apply {
             hasFixedSize()
             layoutManager = LinearLayoutManager(context)
-            adapter = adapter
+            adapter = cardAdapter
         }
     }
 }

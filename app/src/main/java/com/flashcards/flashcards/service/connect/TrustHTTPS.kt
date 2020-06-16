@@ -50,5 +50,5 @@ class TrustHTTPS @Inject constructor(private val mClient: OkHttpClient.Builder) 
         }
 
     }
-
 }
+

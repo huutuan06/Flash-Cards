@@ -2,6 +2,7 @@ package com.flashcards.flashcards.ui.login
 
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.flashcards.flashcards.BR
 import com.flashcards.flashcards.R
@@ -37,12 +38,14 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(), View
         return mLoginViewModel!!
     }
 
+    //Wrong structure
+    override fun onClick(v: View?) {
+        login()
+    }
+
     fun login() {
         mMainActivity.mNavController.popBackStack()
         mMainActivity.mNavController.navigate(R.id.homeFragment)
     }
-
-    override fun onClick(v: View?) {
-        login()
-    }
 }
+

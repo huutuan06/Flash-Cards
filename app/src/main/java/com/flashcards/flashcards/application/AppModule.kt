@@ -1,4 +1,4 @@
-package com.flashcards.flashcards.di.app
+package com.flashcards.flashcards.application
 
 import com.flashcards.flashcards.service.connect.TrustHTTPS
 import com.flashcards.flashcards.service.repository.IService
@@ -32,6 +32,9 @@ class AppModule {
     internal fun provideOkHttpClient(interceptor: HttpLoggingInterceptor): OkHttpClient.Builder {
         return OkHttpClient.Builder()
             .addInterceptor(interceptor)
+            .addInterceptor(HttpLoggingInterceptor().apply {
+                this.level = HttpLoggingInterceptor.Level.BODY
+            })
             .readTimeout(60, TimeUnit.SECONDS)
             .connectTimeout(60, TimeUnit.SECONDS)
             .writeTimeout(60, TimeUnit.SECONDS)
@@ -61,5 +64,4 @@ class AppModule {
     fun provideIService(retrofit: Retrofit): IService {
         return retrofit.create(IService::class.java)
     }
-
 }

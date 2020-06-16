@@ -16,9 +16,4 @@ abstract class HomeModule {
     @FragmentScope
     @ContributesAndroidInjector(modules = [HomeViewModelModule::class])
     abstract fun provideHomeFragment(): HomeFragment
-
-    companion object {
-        @Provides
-        fun provideCardAdapter() = CardAdapter()
-    }
 }

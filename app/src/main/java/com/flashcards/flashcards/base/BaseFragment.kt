@@ -7,24 +7,22 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import dagger.android.support.DaggerFragment
 
 abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFragment() {
 
     private lateinit var mRootView: View
-    private lateinit var mViewDataBinding: T
-    private var mViewModel: V? = null
-
+    protected lateinit var binding: T
+    protected lateinit var mViewModel: V
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mViewDataBinding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
-        mRootView = mViewDataBinding.root
+        binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
+        mRootView = binding.root
+        initView()
         return mRootView
     }
 
@@ -35,9 +33,9 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFrag
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mViewDataBinding.setVariable(getBindingVariable(), mViewModel)
-        mViewDataBinding.lifecycleOwner = this
-        mViewDataBinding.executePendingBindings()
+        binding.setVariable(getBindingVariable(), mViewModel)
+        binding.lifecycleOwner = this
+        binding.executePendingBindings()
         initAttributes()
 
     }
@@ -50,4 +48,6 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFrag
     abstract fun getBindingVariable() : Int
 
     abstract fun getViewModel(): V
+
+    open fun initView() {}
 }

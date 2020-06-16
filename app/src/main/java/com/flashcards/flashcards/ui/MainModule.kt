@@ -7,6 +7,7 @@ import dagger.Provides
 
 @Module
 class MainModule {
+
     @ActivityScope
     @Provides
     fun provideLoadingDialog(activity: MainActivity) = LoadingDialog(activity)
