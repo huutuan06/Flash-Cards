@@ -48,4 +48,3 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(), View
         mMainActivity.mNavController.navigate(R.id.homeFragment)
     }
 }
-

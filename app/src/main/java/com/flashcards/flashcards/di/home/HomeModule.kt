@@ -17,3 +17,4 @@ abstract class HomeModule {
     @ContributesAndroidInjector(modules = [HomeViewModelModule::class])
     abstract fun provideHomeFragment(): HomeFragment
 }
+

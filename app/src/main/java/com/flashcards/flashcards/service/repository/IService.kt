@@ -6,6 +6,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 
 interface IService {
+
     @GET("api/cards")
     fun getAllVocabularies() : Observable<List<Vocabulary>>
 }

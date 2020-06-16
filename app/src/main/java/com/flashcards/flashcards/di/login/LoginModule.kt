@@ -11,5 +11,4 @@ abstract class LoginModule {
     @FragmentScope
     @ContributesAndroidInjector(modules = [LoginViewModelModule::class])
     abstract fun provideLoginFragment(): LoginFragment
-
 }

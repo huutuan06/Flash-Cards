@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.flashcards.flashcards.base.BaseViewModel
 import com.flashcards.flashcards.service.model.Vocabulary
 import com.flashcards.flashcards.service.repository.IService
+import com.flashcards.flashcards.util.applyIOScheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
@@ -16,8 +17,7 @@ class HomeViewModel @Inject constructor(private var iService: IService) : BaseVi
 
     init {
         disposable.add(iService.getAllVocabularies()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
+            .applyIOScheduler()
             .doOnSubscribe {
                 isLoading.value = true
             }

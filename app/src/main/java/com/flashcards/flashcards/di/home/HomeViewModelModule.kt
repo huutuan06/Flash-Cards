@@ -16,3 +16,4 @@ abstract class HomeViewModelModule {
     @ViewModelKey(HomeViewModel::class)
     abstract fun bindLoginViewModel(viewModel: HomeViewModel): ViewModel
 }
+
