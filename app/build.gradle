@@ -10,18 +10,39 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.0"
     defaultConfig {
-        applicationId "com.example.flashcards"
+        applicationId "com.flashcards.flashcards"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        applicationId "info.androidhive.databinding"
+
+        buildConfigField "String", "END_POINT_DEV", '"https://shawn-movie-rental.herokuapp.com/"'
+        buildConfigField "String", "END_POINT_PROD", '"https://shawn-movie-rental.herokuapp.com/"'
     }
     buildTypes {
         release {
             minifyEnabled false
+            debuggable false
+
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-DEBUG"
+        }
+    }
+
+    applicationVariants.all { variant ->
+        variant.resValue "string", "versionName", variant.versionName
+
+        variant.outputs.all {
+            if (variant.name.contains("Release")) {
+                outputFileName = "flashcard-app.apk"
+            } else if (variant.name.contains("Debug")) {
+                outputFileName = "flashcard_debug.apk"
+            }
         }
     }
 

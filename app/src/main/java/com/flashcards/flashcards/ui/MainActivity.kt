@@ -1,12 +1,15 @@
 package com.flashcards.flashcards.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.flashcards.flashcards.R
 import com.flashcards.flashcards.databinding.ActivityMainBinding
+import com.flashcards.flashcards.util.FcException
+import com.flashcards.flashcards.util.transform
 import dagger.android.support.DaggerAppCompatActivity
 
 class MainActivity : DaggerAppCompatActivity() {

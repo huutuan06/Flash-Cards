@@ -4,6 +4,7 @@ import com.flashcards.flashcards.service.connect.TrustHTTPS
 import com.flashcards.flashcards.service.repository.IService
 import com.flashcards.flashcards.ui.MainActivity
 import com.flashcards.flashcards.ui.dialog.LoadingDialog
+import com.flashcards.flashcards.util.APIConstant
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -52,7 +53,7 @@ class AppModule {
     internal fun provideRetrofitInstance(trustHTTPS: TrustHTTPS,client: OkHttpClient.Builder): Retrofit {
         trustHTTPS.intializeCertificate()
         return Retrofit.Builder()
-            .baseUrl("https://shawn-movie-rental.herokuapp.com/")
+            .baseUrl(APIConstant.BASE_URL)
             .client(client.build())
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

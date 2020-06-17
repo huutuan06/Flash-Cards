@@ -25,8 +25,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(), View
 
     override fun getLayoutId() = R.layout.fragment_login
 
-    override fun initAttributes() {
-        linear_login.setOnClickListener(this)
+    override fun initView() {
+        binding.linearLogin.setOnClickListener(this)
     }
 
     override fun getBindingVariable(): Int {

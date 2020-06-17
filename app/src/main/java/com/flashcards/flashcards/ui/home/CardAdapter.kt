@@ -17,7 +17,8 @@ import kotlinx.android.synthetic.main.item_card.view.*
 
 class CardAdapter(
     lifecycleOwner: LifecycleOwner,
-    private val data: LiveData<List<Vocabulary>>
+    private val data: LiveData<List<Vocabulary>>,
+    private val onItemClicked: (Vocabulary) -> Unit
 ) :
     RecyclerView.Adapter<CardAdapter.ViewHolder>() {
 
@@ -39,6 +40,7 @@ class CardAdapter(
     override fun getItemCount() = listItems.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = listItems[position]
         Glide.with(holder.itemView.context).load(listItems[position].image)
             .into(holder.imgCard)
         holder.apply {
@@ -48,6 +50,15 @@ class CardAdapter(
             txtContext.text = listItems[position].context.toString()
             txtExample.text = listItems[position].example.toString()
         }
+        with(holder.itemView) {
+            tag = item
+            setOnClickListener(mOnClickListener)
+        }
+    }
+
+    private val mOnClickListener = View.OnClickListener {
+        val item = it.tag as Vocabulary
+        onItemClicked(item)
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

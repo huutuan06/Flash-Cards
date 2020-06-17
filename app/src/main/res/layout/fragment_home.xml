@@ -1,26 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
     <data>
-
         <variable
             name="homeViewModel"
-            type="com.flashcards.flashcards.ui.home.HomeViewModel" />
+            type="com.flashcards.flashcards.ui.home.HomeViewModel"
+            />
     </data>
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
+
+        <ImageView
+            android:id="@+id/img_no_internet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_no_internet"
+            android:visibility="@{homeViewModel.listVocabularies == null &amp;&amp; homeViewModel.isLoading == false}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <Button
+            android:id="@+id/btn_reload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_btn_reload"
+            android:visibility="@{homeViewModel.listVocabularies == null &amp;&amp; homeViewModel.isLoading == false}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_no_internet"
+            />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_vocabularies"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
+        <include
+            layout="@layout/view_word_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:wordInfo="@{homeViewModel.word}"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

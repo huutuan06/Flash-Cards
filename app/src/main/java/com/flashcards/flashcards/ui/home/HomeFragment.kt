@@ -1,8 +1,10 @@
 package com.flashcards.flashcards.ui.home
 
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.flashcards.flashcards.BR
 import com.flashcards.flashcards.R
 import com.flashcards.flashcards.base.BaseFragment
@@ -29,6 +31,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     override fun initView() {
         initRecyclerView()
+
         mViewModel.isLoading.observe(this, Observer {
             if (it) {
                 loadingDialog.show()
@@ -36,16 +39,37 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                 loadingDialog.dismiss()
             }
         })
-    }
 
-    override fun initAttributes() {}
+        compositeDisposable.add(mViewModel.observableAction.subscribe {
+            when (it) {
+                is HomeViewModel.Event.Error -> {
+                    handleException(it.throwable)
+                }
+            }
+        })
+
+        binding.recyclerViewVocabularies.addOnScrollListener(object :
+            RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                mViewModel.word.value = null
+            }
+        })
+
+        binding.btnReload.setOnClickListener {
+            Toast.makeText(context, "Reload.", Toast.LENGTH_LONG).show()
+        }
+    }
 
     override fun getViewModel(): HomeViewModel {
         return ViewModelProvider(this, viewModelProviderFactory).get(HomeViewModel::class.java)
     }
 
     private fun initRecyclerView() {
-        val cardAdapter = CardAdapter(this, mViewModel.listVocabularies)
+        val cardAdapter = CardAdapter(
+            this, mViewModel.listVocabularies,
+            mViewModel::onWordSelected
+        )
 
         binding.recyclerViewVocabularies.apply {
             hasFixedSize()
