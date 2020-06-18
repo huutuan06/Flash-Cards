@@ -1,15 +1,11 @@
-package com.flashcards.flashcards.ui
+package com.flashcards.flashcards.ui.main
 
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.flashcards.flashcards.R
 import com.flashcards.flashcards.databinding.ActivityMainBinding
-import com.flashcards.flashcards.util.FcException
-import com.flashcards.flashcards.util.transform
 import dagger.android.support.DaggerAppCompatActivity
 
 class MainActivity : DaggerAppCompatActivity() {
@@ -22,7 +18,6 @@ class MainActivity : DaggerAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        supportActionBar!!.hide()
         initNavigation()
     }
 

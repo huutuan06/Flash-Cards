@@ -1,8 +1,7 @@
-package com.flashcards.flashcards.di.login
+package com.flashcards.flashcards.ui.login
 
 import androidx.lifecycle.ViewModel
 import com.flashcards.flashcards.di.ViewModelKey
-import com.flashcards.flashcards.ui.login.LoginViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

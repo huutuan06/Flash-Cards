@@ -32,13 +32,14 @@
                 android:layout_height="wrap_content"
                 android:text="@string/label_en_title"
                 android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
                 />
 
             <TextView
                 android:id="@+id/txt_english_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold"
                 />
         </LinearLayout>
@@ -54,12 +55,14 @@
                 android:layout_height="wrap_content"
                 android:text="@string/label_vn_title"
                 android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
                 />
 
             <TextView
                 android:id="@+id/txt_vietnamese_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
                 />
         </LinearLayout>
 
@@ -74,12 +77,14 @@
                 android:layout_height="wrap_content"
                 android:text="@string/label_type_word"
                 android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
                 />
 
             <TextView
                 android:id="@+id/txt_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
                 />
         </LinearLayout>
 
@@ -94,12 +99,14 @@
                 android:layout_height="wrap_content"
                 android:text="@string/label_context_word"
                 android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
                 />
 
             <TextView
                 android:id="@+id/txt_context"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
                 />
         </LinearLayout>
 
@@ -114,12 +121,14 @@
                 android:layout_height="wrap_content"
                 android:text="@string/label_example"
                 android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
                 />
 
             <TextView
                 android:id="@+id/txt_example"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
                 />
         </LinearLayout>
     </LinearLayout>

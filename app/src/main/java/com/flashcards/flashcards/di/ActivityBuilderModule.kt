@@ -1,10 +1,9 @@
 package com.flashcards.flashcards.di
 
-import com.flashcards.flashcards.di.home.HomeModule
-import com.flashcards.flashcards.di.login.LoginModule
 import com.flashcards.flashcards.di.scope.ActivityScope
-import com.flashcards.flashcards.ui.MainActivity
-import com.flashcards.flashcards.ui.MainModule
+import com.flashcards.flashcards.ui.home.HomePagerModule
+import com.flashcards.flashcards.ui.main.MainActivity
+import com.flashcards.flashcards.ui.main.MainModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -12,6 +11,6 @@ import dagger.android.ContributesAndroidInjector
 abstract class ActivityBuilderModule {
 
     @ActivityScope
-    @ContributesAndroidInjector(modules = [MainModule::class, HomeModule::class, LoginModule::class])
+    @ContributesAndroidInjector(modules = [MainModule::class, HomePagerModule::class])
     abstract fun contributeMainActivity() : MainActivity
 }

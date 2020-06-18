@@ -1,8 +1,7 @@
-package com.flashcards.flashcards.ui.home
+package com.flashcards.flashcards.ui.flashcard
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.flashcards.flashcards.base.BaseViewModel
 import com.flashcards.flashcards.service.model.Vocabulary
 import com.flashcards.flashcards.service.repository.IService
@@ -11,7 +10,7 @@ import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import javax.inject.Inject
 
-class HomeViewModel @Inject constructor(private var iService: IService) : BaseViewModel() {
+class FlashCardViewModel @Inject constructor(private var iService: IService) : BaseViewModel() {
 
     sealed class Event {
         data class Error(val throwable: Throwable) : Event()

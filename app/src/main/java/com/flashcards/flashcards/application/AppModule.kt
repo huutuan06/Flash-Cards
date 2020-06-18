@@ -2,8 +2,6 @@ package com.flashcards.flashcards.application
 
 import com.flashcards.flashcards.service.connect.TrustHTTPS
 import com.flashcards.flashcards.service.repository.IService
-import com.flashcards.flashcards.ui.MainActivity
-import com.flashcards.flashcards.ui.dialog.LoadingDialog
 import com.flashcards.flashcards.util.APIConstant
 import dagger.Module
 import dagger.Provides

@@ -1,4 +1,4 @@
-package com.flashcards.flashcards.ui.home
+package com.flashcards.flashcards.ui.flashcard
 
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.flashcards.flashcards.R
 import com.flashcards.flashcards.service.model.Vocabulary
-import com.flashcards.flashcards.ui.MainActivity
 import kotlinx.android.synthetic.main.item_card.view.*
 
 class CardAdapter(

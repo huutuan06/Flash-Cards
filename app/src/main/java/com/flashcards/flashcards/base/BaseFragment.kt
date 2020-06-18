@@ -10,7 +10,6 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.flashcards.flashcards.R
-import com.flashcards.flashcards.ui.MainActivity
 import com.flashcards.flashcards.util.FcException
 import com.flashcards.flashcards.util.transform
 import dagger.android.support.DaggerFragment

@@ -1,6 +1,5 @@
-package com.flashcards.flashcards.ui.home
+package com.flashcards.flashcards.ui.flashcard
 
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -8,12 +7,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.flashcards.flashcards.BR
 import com.flashcards.flashcards.R
 import com.flashcards.flashcards.base.BaseFragment
-import com.flashcards.flashcards.databinding.FragmentHomeBinding
+import com.flashcards.flashcards.databinding.FragmentFlashcardBinding
 import com.flashcards.flashcards.ui.dialog.LoadingDialog
 import com.flashcards.flashcards.viewmodel.ViewModelProviderFactory
 import javax.inject.Inject
 
-class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
+class FlashCardFragment : BaseFragment<FragmentFlashcardBinding, FlashCardViewModel>() {
 
     @Inject
     lateinit var viewModelProviderFactory: ViewModelProviderFactory
@@ -21,13 +20,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     @Inject
     lateinit var loadingDialog: LoadingDialog
 
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_home
-    }
+    override fun getLayoutId(): Int = R.layout.fragment_flashcard
 
-    override fun getBindingVariable(): Int {
-        return BR.homeViewModel
-    }
+    override fun getBindingVariable(): Int = BR.flashcardViewModel
+
+    override fun getViewModel(): FlashCardViewModel =
+        ViewModelProvider(this, viewModelProviderFactory).get(FlashCardViewModel::class.java)
 
     override fun initView() {
         initRecyclerView()
@@ -42,7 +40,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
         compositeDisposable.add(mViewModel.observableAction.subscribe {
             when (it) {
-                is HomeViewModel.Event.Error -> {
+                is FlashCardViewModel.Event.Error -> {
                     handleException(it.throwable)
                 }
             }
@@ -55,14 +53,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                 mViewModel.word.value = null
             }
         })
-
-        binding.btnReload.setOnClickListener {
-            Toast.makeText(context, "Reload.", Toast.LENGTH_LONG).show()
-        }
-    }
-
-    override fun getViewModel(): HomeViewModel {
-        return ViewModelProvider(this, viewModelProviderFactory).get(HomeViewModel::class.java)
     }
 
     private fun initRecyclerView() {

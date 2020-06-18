@@ -16,4 +16,10 @@
     <!-- No internet -->
     <string name="label_btn_reload">Reload</string>
 
+    <!-- Layout behavior -->
+    <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
+
+    <!-- Tab title -->
+    <string name="flashcard_title">Flash cards</string>
+    <string name="login_title">Login</string>
 </resources>

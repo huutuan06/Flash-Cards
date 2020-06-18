@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#38b5f2</color>
-    <color name="colorPrimaryDark">#5F86F6</color>
-    <color name="colorAccent">#38b5f2</color>
+    <color name="colorPrimary">#673ab7</color>
+    <color name="colorPrimaryDark">#512da8</color>
+    <color name="colorAccent">#ffffff</color>
     <color name="transparent">#00000000</color>
-    <color name="colorWordDetail">#A6FAFF</color>
+    <color name="store_clicked">#ffffff</color>
+
+    <color name="soft_yellow">#FFFACD</color>
+
+<!--    <color name="orange">#ff5721</color>-->
 
 </resources>
