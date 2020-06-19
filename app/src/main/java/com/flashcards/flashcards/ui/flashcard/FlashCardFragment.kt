@@ -1,5 +1,6 @@
 package com.flashcards.flashcards.ui.flashcard
 
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -38,21 +39,9 @@ class FlashCardFragment : BaseFragment<FragmentFlashcardBinding, FlashCardViewMo
             }
         })
 
-        compositeDisposable.add(mViewModel.observableAction.subscribe {
-            when (it) {
-                is FlashCardViewModel.Event.Error -> {
-                    handleException(it.throwable)
-                }
-            }
-        })
-
-        binding.recyclerViewVocabularies.addOnScrollListener(object :
-            RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                mViewModel.word.value = null
-            }
-        })
+        hideWordDetailWhenScrollView()
+        showTechniqueLearned()
+        this.handleException()
     }
 
     private fun initRecyclerView() {
@@ -66,5 +55,33 @@ class FlashCardFragment : BaseFragment<FragmentFlashcardBinding, FlashCardViewMo
             layoutManager = LinearLayoutManager(context)
             adapter = cardAdapter
         }
+    }
+
+    private fun hideWordDetailWhenScrollView() {
+        binding.recyclerViewVocabularies.addOnScrollListener(object :
+            RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                mViewModel.word.value = null
+            }
+        })
+    }
+
+    private fun showTechniqueLearned() {
+        mViewModel.word.observe(this, Observer {
+            if (it != null) {
+                Toast.makeText(context, R.string.data_binding,Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
+    private fun handleException() {
+        compositeDisposable.add(mViewModel.observableAction.subscribe {
+            when (it) {
+                is FlashCardViewModel.Event.Error -> {
+                    handleException(it.throwable)
+                }
+            }
+        })
     }
 }

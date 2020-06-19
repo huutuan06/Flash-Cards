@@ -22,4 +22,7 @@
     <!-- Tab title -->
     <string name="flashcard_title">Flash cards</string>
     <string name="login_title">Login</string>
+
+    <!-- Technique Learned -->
+    <string name="data_binding">Data Binding</string>
 </resources>

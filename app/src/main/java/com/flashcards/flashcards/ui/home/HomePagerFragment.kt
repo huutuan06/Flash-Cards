@@ -6,11 +6,12 @@ import com.flashcards.flashcards.R
 import com.flashcards.flashcards.base.BaseFragment
 import com.flashcards.flashcards.databinding.FragmentHomePagerBinding
 import com.flashcards.flashcards.viewmodel.ViewModelProviderFactory
+import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
-class HomePagerFragment : BaseFragment<FragmentHomePagerBinding, HomePagerViewModel>(){
+class HomePagerFragment : BaseFragment<FragmentHomePagerBinding, HomePagerViewModel>() {
 
     @Inject
     lateinit var viewModelProviderFactory: ViewModelProviderFactory
@@ -19,8 +20,10 @@ class HomePagerFragment : BaseFragment<FragmentHomePagerBinding, HomePagerViewMo
 
     override fun getBindingVariable(): Int = BR.homePagerViewModel
 
-    override fun getViewModel(): HomePagerViewModel = ViewModelProvider(this, viewModelProviderFactory).get(
-        HomePagerViewModel::class.java)
+    override fun getViewModel(): HomePagerViewModel =
+        ViewModelProvider(this, viewModelProviderFactory).get(
+            HomePagerViewModel::class.java
+        )
 
     override fun initView() {
         val tabLayout = binding.tabs
@@ -28,7 +31,7 @@ class HomePagerFragment : BaseFragment<FragmentHomePagerBinding, HomePagerViewMo
 
         viewPager.adapter = PagerAdapter(this)
 
-        TabLayoutMediator (tabLayout, viewPager) { tab, position ->
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.setIcon(getTabIcon(position))
             tab.text = getTabTitle(position)
         }.attach()

@@ -36,7 +36,7 @@ class FlashCardViewModel @Inject constructor(private var iService: IService) : B
             .subscribe({
                 listVocabularies.value = it.toMutableList()
             }, {
-                Log.e("HomeViewModel:", it.message.toString())
+                Log.e("FlashCardViewModel:", it.message.toString())
                 eventAction.onNext(Event.Error(it))
             })
         )
