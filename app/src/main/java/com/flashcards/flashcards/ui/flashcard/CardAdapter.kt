@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.flashcards.flashcards.R
+import com.flashcards.flashcards.databinding.ItemCardBinding
 import com.flashcards.flashcards.service.model.Vocabulary
 import kotlinx.android.synthetic.main.item_card.view.*
 
@@ -32,25 +33,18 @@ class CardAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_card, parent, false)
+            ItemCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 
     override fun getItemCount() = listItems.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = listItems[position]
-        Glide.with(holder.itemView.context).load(listItems[position].image)
-            .into(holder.imgCard)
-        holder.apply {
-            txtEnglishTitle.text = listItems[position].englishTitle.toString()
-            txtVietnameseTitle.text = listItems[position].vietnameseTitle.toString()
-            txtType.text = listItems[position].type.toString()
-            txtContext.text = listItems[position].context.toString()
-            txtExample.text = listItems[position].example.toString()
-        }
+        val vocabulary = listItems[position]
+        holder.bind(vocabulary)
+
         with(holder.itemView) {
-            tag = item
+            tag = vocabulary
             setOnClickListener(mOnClickListener)
         }
     }
@@ -60,12 +54,11 @@ class CardAdapter(
         onItemClicked(item)
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var imgCard: ImageView = itemView.img_card
-        var txtEnglishTitle: TextView = itemView.txt_english_title
-        var txtVietnameseTitle: TextView = itemView.txt_vietnamese_title
-        var txtType: TextView = itemView.txt_type
-        var txtContext: TextView = itemView.txt_context
-        var txtExample: TextView = itemView.txt_example
+    class ViewHolder(private val binding: ItemCardBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: Vocabulary) {
+            binding.apply {
+                vocabulary = item
+            }
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.flashcards.flashcards.ui.login
+package com.flashcards.flashcards.ui.touch
 
 import androidx.lifecycle.ViewModel
 import com.flashcards.flashcards.di.ViewModelKey
@@ -7,10 +7,10 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 
 @Module
-abstract class LoginViewModelModule {
+abstract class TouchViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(LoginViewModel::class)
-    abstract fun bindLoginViewModel(viewModel: LoginViewModel): ViewModel
+    @ViewModelKey(TouchViewModel::class)
+    abstract fun bindTouchViewModel(viewModel: TouchViewModel): ViewModel
 }

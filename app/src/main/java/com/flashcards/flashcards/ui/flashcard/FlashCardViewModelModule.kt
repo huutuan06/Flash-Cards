@@ -14,4 +14,3 @@ abstract class FlashCardViewModelModule {
     @ViewModelKey(FlashCardViewModel::class)
     abstract fun bindFlashCardViewModel(viewModel: FlashCardViewModel): ViewModel
 }
-

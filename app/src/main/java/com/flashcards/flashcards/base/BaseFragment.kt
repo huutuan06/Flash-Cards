@@ -63,6 +63,21 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFrag
         }
     }
 
+    private var mToast: Toast? = null
+    protected fun toast(resId: Int, duration: Int = Toast.LENGTH_SHORT) {
+        mToast?.cancel()
+        mToast = Toast.makeText(context, resId, duration)
+        mToast?.show()
+    }
+
+    protected fun toast(message: String? = null, duration: Int = Toast.LENGTH_SHORT) {
+        mToast?.cancel()
+        message?.let {
+            mToast = Toast.makeText(context, it, duration)
+            mToast?.show()
+        }
+    }
+
     @LayoutRes
     abstract fun getLayoutId(): Int
 

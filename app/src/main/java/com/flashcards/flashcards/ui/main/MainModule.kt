@@ -1,8 +1,7 @@
 package com.flashcards.flashcards.ui.main
 
 import com.flashcards.flashcards.di.scope.ActivityScope
-import com.flashcards.flashcards.ui.dialog.LoadingDialog
-import com.flashcards.flashcards.ui.main.MainActivity
+import com.flashcards.flashcards.ui.view.LoadingDialog
 import dagger.Module
 import dagger.Provides
 

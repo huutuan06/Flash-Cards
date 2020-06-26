@@ -42,7 +42,7 @@ class HomePagerFragment : BaseFragment<FragmentHomePagerBinding, HomePagerViewMo
     private fun getTabIcon(position: Int): Int {
         return when (position) {
             FLASH_CARD_PAGE_INDEX -> R.drawable.garden_tab_selector
-            LOGIN_INDEX -> R.drawable.plant_list_tab_selector
+            TOUCH_SCREEN_INDEX -> R.drawable.plant_list_tab_selector
             else -> throw IndexOutOfBoundsException()
         }
     }
@@ -50,7 +50,7 @@ class HomePagerFragment : BaseFragment<FragmentHomePagerBinding, HomePagerViewMo
     private fun getTabTitle(position: Int): String? {
         return when (position) {
             FLASH_CARD_PAGE_INDEX -> getString(R.string.app_name)
-            LOGIN_INDEX -> getString(R.string.login_title)
+            TOUCH_SCREEN_INDEX -> getString(R.string.login_title)
             else -> throw IndexOutOfBoundsException()
         }
     }

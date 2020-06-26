@@ -1,4 +1,4 @@
-package com.flashcards.flashcards.ui.dialog
+package com.flashcards.flashcards.ui.view
 
 import android.app.Activity
 import android.app.Dialog

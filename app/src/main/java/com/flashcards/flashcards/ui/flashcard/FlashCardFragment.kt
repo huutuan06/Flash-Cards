@@ -9,7 +9,7 @@ import com.flashcards.flashcards.BR
 import com.flashcards.flashcards.R
 import com.flashcards.flashcards.base.BaseFragment
 import com.flashcards.flashcards.databinding.FragmentFlashcardBinding
-import com.flashcards.flashcards.ui.dialog.LoadingDialog
+import com.flashcards.flashcards.ui.view.LoadingDialog
 import com.flashcards.flashcards.viewmodel.ViewModelProviderFactory
 import javax.inject.Inject
 
@@ -70,7 +70,7 @@ class FlashCardFragment : BaseFragment<FragmentFlashcardBinding, FlashCardViewMo
     private fun showTechniqueLearned() {
         mViewModel.word.observe(this, Observer {
             if (it != null) {
-                Toast.makeText(context, R.string.data_binding,Toast.LENGTH_LONG).show()
+                toast(R.string.data_binding)
             }
         })
     }
