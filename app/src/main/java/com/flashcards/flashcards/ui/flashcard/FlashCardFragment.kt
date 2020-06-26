@@ -1,6 +1,5 @@
 package com.flashcards.flashcards.ui.flashcard
 
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager

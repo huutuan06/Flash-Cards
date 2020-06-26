@@ -1,30 +1,29 @@
 package com.flashcards.flashcards.ui.flashcard
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.flashcards.flashcards.R
 import com.flashcards.flashcards.databinding.ItemCardBinding
 import com.flashcards.flashcards.service.model.Vocabulary
-import kotlinx.android.synthetic.main.item_card.view.*
 
 class CardAdapter(
     lifecycleOwner: LifecycleOwner,
     private val data: LiveData<List<Vocabulary>>,
     private val onItemClicked: (Vocabulary) -> Unit
 ) :
-    RecyclerView.Adapter<CardAdapter.ViewHolder>() {
+    ListAdapter<Vocabulary, CardAdapter.ViewHolder>(CardDiffCallback()) {
 
     init {
         data.observe(lifecycleOwner, Observer {
-            notifyDataSetChanged()
+//            notifyDataSetChanged()
+            submitList(listItems)
         })
     }
 
@@ -60,5 +59,17 @@ class CardAdapter(
                 vocabulary = item
             }
         }
+    }
+}
+
+private class CardDiffCallback : DiffUtil.ItemCallback<Vocabulary>() {
+
+    override fun areItemsTheSame(oldItem: Vocabulary, newItem: Vocabulary): Boolean {
+        return oldItem.englishTitle == newItem.englishTitle
+    }
+
+    @SuppressLint("DiffUtilEquals")
+    override fun areContentsTheSame(oldItem: Vocabulary, newItem: Vocabulary): Boolean {
+        return oldItem == newItem
     }
 }
