@@ -10,6 +10,6 @@ This project using:
 - Firebase Analytics
 - Firebase Crashlytics
 
-*** For get data from server:
+*** For getting data from server:
 - Master branch use Rx 
 - Dev branch use cotoutine
