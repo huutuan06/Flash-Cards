@@ -11,4 +11,40 @@
 
     <style name="Theme.Sunflower.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
 
+    <style name="Text" />
+
+    <style name="BodyMedium" parent="@style/Text">
+        <item name="android:fontFamily">@font/avenir_normal_</item>
+        <item name="android:textColor">@color/Dark_Grey</item>
+        <item name="android:textSize">@dimen/font_size_medium</item>
+    </style>
+
+    <!--text body style-->
+    <style name="HgTextViewStyle" parent="BodyMedium">
+        <!--<item name="android:textAppearance">@style/TextAppearance.Body</item>-->
+    </style>
+
+    <style name="HgTextViewStyle.CategoryHeader">
+        <item name="android:padding">@dimen/space_8dp</item>
+        <item name="android:background">@color/grey300</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <style name="ListTestCasesByCategoryStyle">
+        <item name="android:background">@color/grey200</item>
+        <!--<item name="android:elevation">4dp</item>-->
+
+        <item name="android:layout_marginStart">@dimen/space_4dp</item>
+        <item name="android:layout_marginEnd">@dimen/space_4dp</item>
+        <item name="android:layout_marginTop">@dimen/space_2dp</item>
+        <item name="android:layout_marginBottom">@dimen/space_4dp</item>
+
+        <item name="android:paddingStart">@dimen/space_8dp</item>
+        <item name="android:paddingEnd">@dimen/space_4dp</item>
+        <item name="android:paddingBottom">@dimen/space_4dp</item>
+
+        <item name="android:clipToPadding">false</item>
+    </style>
+
 </resources>

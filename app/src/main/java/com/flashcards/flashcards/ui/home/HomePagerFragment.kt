@@ -43,6 +43,7 @@ class HomePagerFragment : BaseFragment<FragmentHomePagerBinding, HomePagerViewMo
         return when (position) {
             FLASH_CARD_PAGE_INDEX -> R.drawable.garden_tab_selector
             TOUCH_SCREEN_INDEX -> R.drawable.plant_list_tab_selector
+            PROGRESS_SCREEN_INDEX -> R.drawable.garden_tab_selector
             else -> throw IndexOutOfBoundsException()
         }
     }
@@ -51,6 +52,7 @@ class HomePagerFragment : BaseFragment<FragmentHomePagerBinding, HomePagerViewMo
         return when (position) {
             FLASH_CARD_PAGE_INDEX -> getString(R.string.app_name)
             TOUCH_SCREEN_INDEX -> getString(R.string.login_title)
+            PROGRESS_SCREEN_INDEX -> getString(R.string.login_title)
             else -> throw IndexOutOfBoundsException()
         }
     }

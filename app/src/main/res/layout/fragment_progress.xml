@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+
+        <variable
+            name="progressViewModel"
+            type="com.flashcards.flashcards.ui.progress.ProgressViewModel"
+            />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_controls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0">
+            
+            <LinearLayout
+                android:id="@+id/ll_action"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:background="@color/backgroundPrimary"
+                android:foreground="?android:selectableItemBackground"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:onClick="@null"
+                android:padding="@dimen/space_8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="UnusedAttribute,UseCompoundDrawables"
+                >
+
+                <ImageView
+                    android:id="@+id/btn_start"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_play"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_start_testing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_8dp"
+                    android:gravity="center_vertical"
+                    android:text="Run All Test"
+                    tools:text="@string/run_all_tests"
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_percent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/space_12dp"
+                android:text="0%"
+                android:textSize="@dimen/font_size_big"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="0%"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll_view_parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_controls"
+            app:layout_constraintVertical_bias="1.0"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_4dp"
+                android:paddingBottom="@dimen/space_4dp"
+                >
+
+                <TextView
+                    android:id="@+id/tv_subjective"
+                    style="@style/HgTextViewStyle.CategoryHeader"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1dp"
+                    android:text="@string/category_1"
+                    app:layout_constraintEnd_toStartOf="@id/tv_critical"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_critical"
+                    style="@style/HgTextViewStyle.CategoryHeader"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/category_2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_subjective"
+                    app:layout_constraintTop_toTopOf="@id/tv_subjective"
+                    />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_1"
+                    style="@style/ListTestCasesByCategoryStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/space_2dp"
+                    android:nestedScrollingEnabled="false"
+                    app:layout_constraintEnd_toStartOf="@id/rv_2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_subjective"
+                    tools:itemCount="5"
+                    tools:listitem="@layout/item_progresst"
+                    />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_2"
+                    style="@style/ListTestCasesByCategoryStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_2dp"
+                    android:nestedScrollingEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/rv_1"
+                    app:layout_constraintTop_toBottomOf="@id/tv_critical"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/item_progresst"
+                    />
+
+                <androidx.constraintlayout.widget.Barrier
+                    android:id="@+id/barrier"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:barrierDirection="bottom"
+                    app:constraint_referenced_ids="rv_1,rv_2"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_automated"
+                    style="@style/HgTextViewStyle.CategoryHeader"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_4dp"
+                    android:layout_marginEnd="1dp"
+                    android:text="@string/category_3"
+                    app:layout_constraintEnd_toStartOf="@id/tv_core"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/barrier"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_core"
+                    style="@style/HgTextViewStyle.CategoryHeader"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/category_4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_automated"
+                    app:layout_constraintTop_toTopOf="@id/tv_automated"
+                    />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_3"
+                    style="@style/ListTestCasesByCategoryStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/space_2dp"
+                    android:nestedScrollingEnabled="false"
+                    app:layout_constraintEnd_toStartOf="@id/rv_4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_automated"
+                    tools:layout_height="150dp"
+                    tools:listitem="@layout/item_progresst"
+                    />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_4"
+                    style="@style/ListTestCasesByCategoryStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_2dp"
+                    android:nestedScrollingEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/rv_3"
+                    app:layout_constraintTop_toBottomOf="@id/tv_core"
+                    tools:layout_height="100dp"
+                    tools:listitem="@layout/item_progresst"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/floating_fragment_wrapper"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_percent=".9"
+            tools:visibility="gone"
+            >
+
+            <FrameLayout
+                android:id="@+id/floating_fragment_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="4dp"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:background="@color/cyan_trans100"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

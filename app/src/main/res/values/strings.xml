@@ -22,7 +22,29 @@
     <!-- Tab title -->
     <string name="flashcard_title">Flash cards</string>
     <string name="login_title">Login</string>
+    <string name="progress_title">Progress</string>
 
     <!-- Technique Learned -->
     <string name="data_binding">Data Binding</string>
+
+    <string name="run_all_tests">Run All Tests</string>
+
+    <!-- Test Categories -->
+    <string name="category_1">Category 1</string>
+    <string name="category_2">Category 2</string>
+    <string name="category_3">Category 3</string>
+    <string name="category_4">Category 4</string>
+
+    <!-- Test Types -->
+    <string name="vibrator">Vibrator</string>
+    <string name="speaker_and_mic">Speaker and Micro</string>
+    <string name="compass">Compass</string>
+    <string name="accelerometer">Accelerometer</string>
+    <string name="fake_item_1">Fake Item 1</string>
+    <string name="fake_item_2">Fake Item 2</string>
+    <string name="fake_item_3">Fake Item 3</string>
+    <string name="fake_item_4">Fake Item 4</string>
+    <string name="fake_item_5">Fake Item 5</string>
+    <string name="fake_item_6">Fake Item 6</string>
+    <string name="fake_item_7">Fake Item 7</string>
 </resources>
