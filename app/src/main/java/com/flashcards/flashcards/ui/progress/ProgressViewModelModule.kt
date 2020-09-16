@@ -22,6 +22,8 @@ abstract class ProgressViewModelModule {
 
 @Module
 class ProgressPersistenceModule {
+
+    //TODO Provide persistence from ProgressFragment instead of MainActivity
 //    @Provides
 //    fun providePersistence(fragment: ProgressFragment): ProgressPersistence {
 //        return fragment.persistence

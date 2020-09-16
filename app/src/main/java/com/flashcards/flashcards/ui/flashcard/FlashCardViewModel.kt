@@ -10,7 +10,7 @@ import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import javax.inject.Inject
 
-class FlashCardViewModel @Inject constructor(private var iService: IService) : BaseViewModel() {
+class FlashCardViewModel @Inject constructor(iService: IService) : BaseViewModel() {
 
     sealed class Event {
         data class Error(val throwable: Throwable) : Event()

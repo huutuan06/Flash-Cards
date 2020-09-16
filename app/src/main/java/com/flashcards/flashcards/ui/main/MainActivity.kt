@@ -13,7 +13,7 @@ import dagger.android.support.DaggerAppCompatActivity
 class MainActivity : DaggerAppCompatActivity() {
 
     private lateinit var mNavHostFragment: NavHostFragment
-    lateinit var mNavController: NavController
+    private lateinit var mNavController: NavController
 
     private val testCaseProvider: TestCaseProvider
         get() = TestCaseProvider(this)

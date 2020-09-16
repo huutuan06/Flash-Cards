@@ -27,7 +27,7 @@ class FlashCardFragment : BaseFragment<FragmentFlashcardBinding, FlashCardViewMo
     override fun getViewModel(): FlashCardViewModel =
         ViewModelProvider(this, viewModelProviderFactory).get(FlashCardViewModel::class.java)
 
-    override fun initView() {
+    override fun initViews() {
         initRecyclerView()
 
         mViewModel.isLoading.observe(this, Observer {

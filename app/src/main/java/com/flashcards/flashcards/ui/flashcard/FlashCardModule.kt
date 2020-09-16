@@ -9,4 +9,3 @@ abstract class FlashCardModule {
     @ContributesAndroidInjector(modules = [FlashCardViewModelModule::class])
     abstract fun provideFlashCardFragment(): FlashCardFragment
 }
-

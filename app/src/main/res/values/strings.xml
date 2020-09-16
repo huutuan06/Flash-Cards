@@ -21,7 +21,6 @@
 
     <!-- Tab title -->
     <string name="flashcard_title">Flash cards</string>
-    <string name="login_title">Login</string>
     <string name="progress_title">Progress</string>
 
     <!-- Technique Learned -->
@@ -47,4 +46,7 @@
     <string name="fake_item_5">Fake Item 5</string>
     <string name="fake_item_6">Fake Item 6</string>
     <string name="fake_item_7">Fake Item 7</string>
+
+    <!--common format-->
+    <string name="format_percent_int">%d\%%</string>
 </resources>

@@ -14,5 +14,3 @@ abstract class HomePagerViewModelModule {
     @ViewModelKey(HomePagerViewModel::class)
     abstract fun bindHomePagerViewModel(viewModel: HomePagerViewModel): ViewModel
 }
-
-

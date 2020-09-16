@@ -29,7 +29,7 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFrag
     ): View? {
         binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
         mRootView = binding.root
-        initView()
+        initViews()
         return mRootView
     }
 
@@ -85,5 +85,5 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFrag
 
     abstract fun getViewModel(): V
 
-    open fun initView() {}
+    open fun initViews() {}
 }

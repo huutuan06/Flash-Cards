@@ -1,5 +1,7 @@
 package com.flashcards.flashcards.application
 
+import android.app.Application
+import android.content.Context
 import com.flashcards.flashcards.service.connect.TrustHTTPS
 import com.flashcards.flashcards.service.repository.IService
 import com.flashcards.flashcards.util.APIConstant
@@ -19,6 +21,12 @@ import javax.inject.Singleton
 
 @Module
 class AppModule {
+
+    @Provides
+    @Singleton
+    internal fun provideContext(application: Application): Context {
+        return application.applicationContext
+    }
 
     @Singleton
     @Provides

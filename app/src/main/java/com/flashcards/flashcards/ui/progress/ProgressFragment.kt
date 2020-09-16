@@ -1,6 +1,5 @@
 package com.flashcards.flashcards.ui.progress
 
-import android.content.Context
 import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
@@ -9,7 +8,6 @@ import com.flashcards.flashcards.BR
 import com.flashcards.flashcards.R
 import com.flashcards.flashcards.base.BaseFragment
 import com.flashcards.flashcards.databinding.FragmentProgressBinding
-import com.flashcards.flashcards.ui.progress.helper.TestCaseProvider
 import com.flashcards.flashcards.ui.progress.model.TestCase
 import com.flashcards.flashcards.util.NoScrollLinearLayoutManager
 import com.flashcards.flashcards.viewmodel.ViewModelProviderFactory
@@ -19,8 +17,6 @@ class ProgressFragment : BaseFragment<FragmentProgressBinding, ProgressViewModel
 
     @Inject
     lateinit var viewModelProviderFactory: ViewModelProviderFactory
-
-//    private lateinit var testCaseProvider: TestCaseProvider
 
     @Inject
     lateinit var persistence: ProgressPersistence
@@ -34,13 +30,12 @@ class ProgressFragment : BaseFragment<FragmentProgressBinding, ProgressViewModel
     override fun getViewModel(): ProgressViewModel =
         ViewModelProvider(this, viewModelProviderFactory).get(ProgressViewModel::class.java)
 
-    override fun initView() {
+    override fun initViews() {
         setupRecyclerView()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        persistence = ProgressPersistence(isGroupTest = false, testCases = testCaseProvider.getTestCases())
         mTestFunctions = persistence.testCases
         persistence.notifyUpdateTestCases()
     }
