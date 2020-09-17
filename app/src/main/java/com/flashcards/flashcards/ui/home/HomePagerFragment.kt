@@ -41,7 +41,7 @@ class HomePagerFragment : BaseFragment<FragmentHomePagerBinding, HomePagerViewMo
     private fun getTabIcon(position: Int): Int {
         return when (position) {
             FLASH_CARD_PAGE_INDEX -> R.drawable.garden_tab_selector
-            PROGRESS_SCREEN_INDEX -> R.drawable.garden_tab_selector
+            PROGRESS_SCREEN_INDEX -> R.drawable.plant_list_tab_selector
             else -> throw IndexOutOfBoundsException()
         }
     }

@@ -6,6 +6,8 @@
 
     <data>
 
+        <import type="com.flashcards.flashcards.ui.progress.model.TestSection" />
+
         <variable
             name="progressViewModel"
             type="com.flashcards.flashcards.ui.progress.ProgressViewModel"
@@ -15,66 +17,30 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         >
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_controls"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <!--Run all test-->
+        <FrameLayout
+            android:id="@+id/header_all"
+            style="@style/TestSectionHeader"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
             android:layout_marginTop="@dimen/space_4dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:foreground="?android:selectableItemBackground"
+            android:onClick="@{() -> progressViewModel.onSectionHeaderClicked(TestSection.All)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0">
-            
-            <LinearLayout
-                android:id="@+id/ll_action"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:background="@color/backgroundPrimary"
-                android:foreground="?android:selectableItemBackground"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:onClick="@null"
-                android:padding="@dimen/space_8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="UnusedAttribute,UseCompoundDrawables"
-                >
+            >
 
-                <ImageView
-                    android:id="@+id/btn_start"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:contentDescription="@null"
-                    app:imageRes="@{progressViewModel.iconStartStop}"
-                    tools:src="@drawable/ic_play"
-                    />
-
-                <TextView
-                    android:id="@+id/tv_start_testing"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/space_8dp"
-                    android:gravity="center_vertical"
-                    android:text="Run All Test"
-                    tools:text="@string/run_all_tests"
-                    />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/tv_percent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/space_12dp"
-                android:text="@{progressViewModel.progressText}"
-                android:textSize="@dimen/font_size_big"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="0%"
+            <include
+                layout="@layout/view_test_section_header"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:viewModel="@{progressViewModel.headerAll}"
                 />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/scroll_view_parent"
@@ -82,10 +48,8 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_controls"
-            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintTop_toBottomOf="@id/header_all"
             >
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -95,28 +59,46 @@
                 android:paddingBottom="@dimen/space_4dp"
                 >
 
-                <TextView
-                    android:id="@+id/tv_subjective"
-                    style="@style/HgTextViewStyle.CategoryHeader"
+                <!--Subjective-->
+                <FrameLayout
+                    android:id="@+id/header_subjective"
+                    style="@style/TestSectionHeader"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="1dp"
-                    android:text="@string/category_1"
-                    app:layout_constraintEnd_toStartOf="@id/tv_critical"
+                    android:onClick="@{() -> progressViewModel.onSectionHeaderClicked(TestSection.Session1)}"
+                    app:layout_constraintEnd_toStartOf="@id/header_critical"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    />
+                    >
 
-                <TextView
-                    android:id="@+id/tv_critical"
-                    style="@style/HgTextViewStyle.CategoryHeader"
+                    <include
+                        layout="@layout/view_test_section_header"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:viewModel="@{progressViewModel.header1}"
+                        />
+                </FrameLayout>
+
+                <!--Critical-->
+                <FrameLayout
+                    android:id="@+id/header_critical"
+                    style="@style/TestSectionHeader"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/category_2"
+                    android:onClick="@{() -> progressViewModel.onSectionHeaderClicked(TestSection.Session2)}"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/tv_subjective"
-                    app:layout_constraintTop_toTopOf="@id/tv_subjective"
-                    />
+                    app:layout_constraintStart_toEndOf="@id/header_subjective"
+                    app:layout_constraintTop_toTopOf="parent"
+                    >
+
+                    <include
+                        layout="@layout/view_test_section_header"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:viewModel="@{progressViewModel.header2}"
+                        />
+                </FrameLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_1"
@@ -127,9 +109,9 @@
                     android:nestedScrollingEnabled="false"
                     app:layout_constraintEnd_toStartOf="@id/rv_2"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_subjective"
+                    app:layout_constraintTop_toBottomOf="@id/header_subjective"
                     tools:itemCount="5"
-                    tools:listitem="@layout/item_progresst"
+                    tools:listitem="@layout/item_progress"
                     />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -141,9 +123,9 @@
                     android:nestedScrollingEnabled="false"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/rv_1"
-                    app:layout_constraintTop_toBottomOf="@id/tv_critical"
+                    app:layout_constraintTop_toBottomOf="@id/header_critical"
                     tools:itemCount="2"
-                    tools:listitem="@layout/item_progresst"
+                    tools:listitem="@layout/item_progress"
                     />
 
                 <androidx.constraintlayout.widget.Barrier
@@ -154,29 +136,47 @@
                     app:constraint_referenced_ids="rv_1,rv_2"
                     />
 
-                <TextView
-                    android:id="@+id/tv_automated"
-                    style="@style/HgTextViewStyle.CategoryHeader"
+                <!--Automated-->
+                <FrameLayout
+                    android:id="@+id/header_automated"
+                    style="@style/TestSectionHeader"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/space_4dp"
                     android:layout_marginEnd="1dp"
-                    android:text="@string/category_3"
-                    app:layout_constraintEnd_toStartOf="@id/tv_core"
+                    android:onClick="@{() -> progressViewModel.onSectionHeaderClicked(TestSection.Session3)}"
+                    app:layout_constraintEnd_toStartOf="@id/header_core"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/barrier"
-                    />
+                    >
 
-                <TextView
-                    android:id="@+id/tv_core"
-                    style="@style/HgTextViewStyle.CategoryHeader"
+                    <include
+                        layout="@layout/view_test_section_header"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:viewModel="@{progressViewModel.header3}"
+                        />
+                </FrameLayout>
+
+                <!--Core-->
+                <FrameLayout
+                    android:id="@+id/header_core"
+                    style="@style/TestSectionHeader"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/category_4"
+                    android:onClick="@{() -> progressViewModel.onSectionHeaderClicked(TestSection.Session4)}"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/tv_automated"
-                    app:layout_constraintTop_toTopOf="@id/tv_automated"
-                    />
+                    app:layout_constraintStart_toEndOf="@id/header_automated"
+                    app:layout_constraintTop_toBottomOf="@id/barrier"
+                    >
+
+                    <include
+                        layout="@layout/view_test_section_header"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:viewModel="@{progressViewModel.header4}"
+                        />
+                </FrameLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_3"
@@ -187,9 +187,9 @@
                     android:nestedScrollingEnabled="false"
                     app:layout_constraintEnd_toStartOf="@id/rv_4"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_automated"
-                    tools:layout_height="150dp"
-                    tools:listitem="@layout/item_progresst"
+                    app:layout_constraintTop_toBottomOf="@id/header_automated"
+                    tools:itemCount="6"
+                    tools:listitem="@layout/item_progress"
                     />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -201,10 +201,36 @@
                     android:nestedScrollingEnabled="false"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/rv_3"
-                    app:layout_constraintTop_toBottomOf="@id/tv_core"
-                    tools:layout_height="100dp"
-                    tools:listitem="@layout/item_progresst"
+                    app:layout_constraintTop_toBottomOf="@id/header_core"
+                    tools:itemCount="9"
+                    tools:listitem="@layout/item_progress"
                     />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_summary"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/space_4dp"
+                    android:paddingBottom="@dimen/space_4dp"
+                    app:layout_constraintBottom_toBottomOf="@id/rv_4"
+                    app:layout_constraintEnd_toEndOf="@id/rv_3"
+                    app:layout_constraintHeight_min="100dp"
+                    app:layout_constraintStart_toStartOf="@id/rv_3"
+                    app:layout_constraintTop_toBottomOf="@id/rv_3"
+                    >
+
+                    <TextView
+                        android:id="@+id/tv_summary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{progressViewModel.resultSummary}"
+                        android:textAlignment="center"
+                        android:textSize="@dimen/font_size_small"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="1 Passed, 0 Failed, 22 TBD"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
 
@@ -223,7 +249,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:elevation="4dp"
-
+                app:fragmentVisibility="@{progressViewModel.floatingFragmentVisible}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -6,6 +6,8 @@ import androidx.annotation.DrawableRes
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.flashcards.flashcards.service.model.Vocabulary
+import com.flashcards.flashcards.ui.progress.Widget.HeaderLayout
+import com.flashcards.flashcards.ui.progress.model.SectionHeader
 
 @BindingAdapter("android:visibility")
 fun setVisibility(view: View, visible: Boolean) {
@@ -25,4 +27,22 @@ fun setSrcImage(view: ImageView, vocabulary: Vocabulary) {
 @BindingAdapter("imageRes")
 fun setImageFromSourceID(imageView: ImageView, @DrawableRes resId: Int) {
     Glide.with(imageView.context).load(resId).into(imageView)
+}
+
+@BindingAdapter("app:sectionHeader")
+fun setSectionHeaderValues(view: HeaderLayout, sectionHeader: SectionHeader) {
+    view.setValues(
+        totalCount = sectionHeader.totalCount,
+        successCount = sectionHeader.successCount,
+        failCount = sectionHeader.currentCount - sectionHeader.successCount
+    )
+}
+
+@BindingAdapter("fragmentVisibility")
+fun setFragmentVisibility(view: View, visible: Boolean) {
+    view.visibility = if (visible) {
+        View.VISIBLE
+    } else {
+        View.INVISIBLE
+    }
 }

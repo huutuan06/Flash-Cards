@@ -47,6 +47,20 @@
     <string name="fake_item_6">Fake Item 6</string>
     <string name="fake_item_7">Fake Item 7</string>
 
-    <!--common format-->
+    <!--Common format-->
     <string name="format_percent_int">%d\%%</string>
+    <string name="format_fraction">%d/%d</string>
+    <string name="format_2_digit">%02d</string>
+    <string name="format_int_with_dot">%d.</string>
+
+    <string name="anchor_item_progress">88.</string>
+
+    <!--Section Progress-->
+    <string name="section_all">All</string>
+    <string name="section_1">Section 1</string>
+    <string name="section_2">Section 2</string>
+    <string name="section_3">Section 3</string>
+    <string name="section_4">Section 4</string>
+
+    <string name="result_summary">%d Passed, %d Failed, %d TBD</string>
 </resources>

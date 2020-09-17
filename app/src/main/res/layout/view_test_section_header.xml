@@ -1,0 +1,62 @@
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.flashcards.flashcards.ui.progress.model.SectionHeader"
+            />
+    </data>
+
+    <com.flashcards.flashcards.ui.progress.Widget.HeaderLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:padding="@dimen/space_4dp"
+        app:sectionHeader="@{viewModel}"
+        >
+
+        <ImageView
+            android:id="@+id/btn_start"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="@dimen/space_4dp"
+            android:contentDescription="@null"
+            android:tint="@color/white"
+            app:imageRes="@{viewModel.getIcon()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_play"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/space_8dp"
+            android:gravity="center_vertical"
+            android:text="@{viewModel.name}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_start"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Critical"
+            />
+
+        <TextView
+            android:id="@+id/tv_percent"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/space_8dp"
+            android:gravity="center_vertical"
+            android:text="@{String.format(@string/format_fraction, viewModel.currentCount, viewModel.totalCount)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="1/12"
+            />
+    </com.flashcards.flashcards.ui.progress.Widget.HeaderLayout>
+</layout>

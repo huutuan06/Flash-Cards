@@ -7,7 +7,9 @@ import androidx.lifecycle.Transformations
 import com.flashcards.flashcards.R
 import com.flashcards.flashcards.base.BaseViewModel
 import com.flashcards.flashcards.ui.progress.model.Category
+import com.flashcards.flashcards.ui.progress.model.SectionHeader
 import com.flashcards.flashcards.ui.progress.model.TestCase
+import com.flashcards.flashcards.ui.progress.model.TestSection
 import io.reactivex.android.schedulers.AndroidSchedulers
 import javax.inject.Inject
 import kotlin.math.roundToInt
@@ -65,6 +67,33 @@ class ProgressViewModel @Inject constructor(
         if (it) R.drawable.ic_pause else R.drawable.ic_play
     }
 
+    val headerAll = MutableLiveData(SectionHeader(context.getString(R.string.section_all)))
+    val header1 = MutableLiveData(SectionHeader(context.getString(R.string.section_1)))
+    val header2 = MutableLiveData(SectionHeader(context.getString(R.string.section_2)))
+    val header3 = MutableLiveData(SectionHeader(context.getString(R.string.section_3)))
+    val header4 = MutableLiveData(SectionHeader(context.getString(R.string.section_4)))
+
+    val resultSummary: LiveData<String> =
+        Transformations.map(headerAll) { item ->
+            context.getString(
+                R.string.result_summary,
+                item.successCount,
+                item.currentCount - item.successCount,
+                item.totalCount - item.currentCount
+            )
+        }.let {
+            Transformations.distinctUntilChanged(it)
+        }
+
+    val floatingFragmentVisible: LiveData<Boolean> =
+        Transformations.map(liveDataCurrentTestCase) { testCase ->
+            if (testCase != null) {
+                !testCase.isBackgroundTest
+            } else {
+                false
+            }
+        }
+
     init {
         listTestCases.forEach { it.isTesting = false }
         persistence.notifyUpdateTestCases()
@@ -77,6 +106,14 @@ class ProgressViewModel @Inject constructor(
     }
 
     fun onTestCaseClick(testCase: TestCase) {
+        if (isTesting.value != true) {
+            //TODO
+        } else {
+
+        }
+    }
+
+    fun onSectionHeaderClicked(testSection: TestSection) {
 
     }
 }

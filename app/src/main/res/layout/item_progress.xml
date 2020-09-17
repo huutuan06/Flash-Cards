@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+        <variable
+            name="testCase"
+            type="com.flashcards.flashcards.ui.progress.model.TestCase"
+            />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:background="@{testCase.getWrapperDrawable(context)}"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:selectableItemBackground"
+        android:paddingStart="@dimen/space_4dp"
+        android:paddingTop="@dimen/space_4dp"
+        android:paddingEnd="0dp"
+        android:paddingBottom="@dimen/space_4dp"
+        tools:background="@drawable/bg_rectangle_small_round_border_neutral"
+        tools:ignore="UnusedAttribute"
+        >
+
+        <!--This view is not display, just a guideline for other views-->
+        <TextView
+            android:id="@+id/tv_anchor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/anchor_item_progress"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/tv_index"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{String.format(@string/format_int_with_dot, testCase.index)}"
+            android:textColor="@{testCase.getTextColor(context)}"
+            android:visibility="@{!testCase.isTesting}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/tv_anchor"
+            app:layout_constraintStart_toStartOf="@id/tv_anchor"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="22."
+            />
+
+        <FrameLayout
+            android:id="@+id/progress_bar_wrapper"
+            android:layout_width="24dp"
+            android:layout_height="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/tv_anchor"
+            app:layout_constraintStart_toStartOf="@id/tv_anchor"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@color/orange_trans100"
+            />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_2dp"
+            android:text="@{testCase.name}"
+            android:textColor="@{testCase.getTextColor(context)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_anchor"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/fake_item_1"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

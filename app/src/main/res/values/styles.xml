@@ -31,6 +31,11 @@
         <item name="android:textSize">17sp</item>
     </style>
 
+    <style name="TestSectionHeader">
+        <item name="android:foreground">?android:selectableItemBackground</item>
+        <item name="android:layout_margin">@dimen/space_2dp</item>
+    </style>
+
     <style name="ListTestCasesByCategoryStyle">
         <item name="android:background">@color/grey200</item>
         <!--<item name="android:elevation">4dp</item>-->

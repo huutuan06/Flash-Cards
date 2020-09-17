@@ -12,6 +12,12 @@
 
 <!--    <color name="orange">#ff5721</color>-->
 
+    <color name="textColorPrimary">@color/Dark_Grey</color>
+
+    <color name="color_neutral">@color/grey500</color>
+    <color name="color_success">@color/green500</color>
+    <color name="color_fail">@color/red500</color>
+
 
 
     <!--color scheme-->
