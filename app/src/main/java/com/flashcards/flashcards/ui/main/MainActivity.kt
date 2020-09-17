@@ -15,16 +15,10 @@ class MainActivity : DaggerAppCompatActivity() {
     private lateinit var mNavHostFragment: NavHostFragment
     private lateinit var mNavController: NavController
 
-    private val testCaseProvider: TestCaseProvider
-        get() = TestCaseProvider(this)
-
-    lateinit var persistence: ProgressPersistence
-
     private var mActivityMainBinding: ActivityMainBinding?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        persistence = ProgressPersistence(isGroupTest = false, testCases = testCaseProvider.getTestCases())
         mActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         initNavigation()
     }

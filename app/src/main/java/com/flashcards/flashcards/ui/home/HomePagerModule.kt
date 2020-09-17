@@ -10,6 +10,12 @@ import dagger.android.ContributesAndroidInjector
 abstract class HomePagerModule {
 
     @FragmentScope
-    @ContributesAndroidInjector(modules = [HomePagerViewModelModule::class, FlashCardModule::class,ProgressModule::class])
+    @ContributesAndroidInjector(
+        modules = [
+            HomePagerViewModelModule::class,
+            FlashCardModule::class,
+            ProgressModule::class
+        ]
+    )
     abstract fun provideHomePagerFragment(): HomePagerFragment
 }

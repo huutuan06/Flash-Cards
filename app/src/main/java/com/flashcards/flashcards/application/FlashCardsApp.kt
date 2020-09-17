@@ -3,10 +3,6 @@ package com.flashcards.flashcards.application
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 
-/**
- * Created by Nguyen Huu Tuan on 26/02/2020.
- */
-
 class FlashCardsApp : GoogleApplication() {
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {

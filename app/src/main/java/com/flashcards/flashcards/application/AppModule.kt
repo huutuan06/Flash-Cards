@@ -15,10 +15,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
-/**
- * Created by Nguyen Huu Tuan on 26/02/2020.
- */
-
 @Module
 class AppModule {
 

@@ -12,6 +12,12 @@ import dagger.android.ContributesAndroidInjector
 abstract class ActivityBuilderModule {
 
     @ActivityScope
-    @ContributesAndroidInjector(modules = [MainModule::class, HomePagerModule::class, ProgressModule::class])
-    abstract fun contributeMainActivity() : MainActivity
+    @ContributesAndroidInjector(
+        modules = [
+            MainModule::class,
+            HomePagerModule::class,
+            ProgressModule::class
+        ]
+    )
+    abstract fun contributeMainActivity(): MainActivity
 }

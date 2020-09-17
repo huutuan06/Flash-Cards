@@ -8,6 +8,7 @@ import com.flashcards.flashcards.BR
 import com.flashcards.flashcards.R
 import com.flashcards.flashcards.base.BaseFragment
 import com.flashcards.flashcards.databinding.FragmentProgressBinding
+import com.flashcards.flashcards.ui.progress.helper.TestCaseProvider
 import com.flashcards.flashcards.ui.progress.model.TestCase
 import com.flashcards.flashcards.util.NoScrollLinearLayoutManager
 import com.flashcards.flashcards.viewmodel.ViewModelProviderFactory
@@ -18,7 +19,9 @@ class ProgressFragment : BaseFragment<FragmentProgressBinding, ProgressViewModel
     @Inject
     lateinit var viewModelProviderFactory: ViewModelProviderFactory
 
-    @Inject
+    private val testCaseProvider: TestCaseProvider
+        get() = TestCaseProvider(context!!)
+
     lateinit var persistence: ProgressPersistence
 
     private lateinit var mTestFunctions : List<TestCase>
@@ -35,6 +38,7 @@ class ProgressFragment : BaseFragment<FragmentProgressBinding, ProgressViewModel
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        persistence = ProgressPersistence(isGroupTest = false, testCases = testCaseProvider.getTestCases())
         super.onCreate(savedInstanceState)
         mTestFunctions = persistence.testCases
         persistence.notifyUpdateTestCases()
