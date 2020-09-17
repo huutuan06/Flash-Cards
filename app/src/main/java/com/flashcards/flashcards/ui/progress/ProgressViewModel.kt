@@ -6,17 +6,20 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.flashcards.flashcards.R
 import com.flashcards.flashcards.base.BaseViewModel
+import com.flashcards.flashcards.ui.navigator.ProgressNavigator
 import com.flashcards.flashcards.ui.progress.model.Category
 import com.flashcards.flashcards.ui.progress.model.SectionHeader
 import com.flashcards.flashcards.ui.progress.model.TestCase
 import com.flashcards.flashcards.ui.progress.model.TestSection
 import io.reactivex.android.schedulers.AndroidSchedulers
+import timber.log.Timber
 import javax.inject.Inject
 import kotlin.math.roundToInt
 
 class ProgressViewModel @Inject constructor(
     context: Context,
-    persistence: ProgressPersistence
+    persistence: ProgressPersistence,
+    var navigator: ProgressNavigator
 ) : BaseViewModel() {
 
     private val listTestCases = persistence.testCases
@@ -46,7 +49,7 @@ class ProgressViewModel @Inject constructor(
     val liveDataFinishTest = MutableLiveData<TestCase?>()
     val liveDataStartTest = MutableLiveData<TestCase?>()
 
-    val liveDataCurrentTestCase : LiveData<TestCase?> =
+    val liveDataCurrentTestCase: LiveData<TestCase?> =
         Transformations.map(liveDataTestCases) { list ->
             list.find { it.isTesting }
         }.let {
@@ -103,13 +106,38 @@ class ProgressViewModel @Inject constructor(
             .subscribe {
                 liveDataTestCases.value = listTestCases
             })
+
+        listenToUpdateHeader(liveDataTestCases, headerAll)
+        listenToUpdateHeader(testCases1, header1)
+        listenToUpdateHeader(testCases2, header2)
+        listenToUpdateHeader(testCases3, header3)
+        listenToUpdateHeader(testCases4, header4)
+    }
+
+    private fun listenToUpdateHeader(
+        listTestCase: LiveData<List<TestCase>>,
+        header: MutableLiveData<SectionHeader>
+    ) {
+        listTestCase.observeForever { list ->
+            val testedCount = list.count { it.isTested }
+            val successCount = list.count { it.isSuccess }
+            val isSuccess = list.all { it.isSuccess }
+            header.value!!.copy(
+                totalCount = list.size,
+                currentCount = testedCount,
+                successCount = successCount,
+                isSuccess = isSuccess
+            ).let {
+                header.value = it
+            }
+        }
     }
 
     fun onTestCaseClick(testCase: TestCase) {
         if (isTesting.value != true) {
-            //TODO
+            navigator.testFunction(testCase)
         } else {
-
+            Timber.w("onTestCaseClick -- continues test running")
         }
     }
 

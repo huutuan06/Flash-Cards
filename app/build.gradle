@@ -141,4 +141,7 @@ dependencies {
 
     //ViewPager2
     implementation "androidx.viewpager2:viewpager2:1.0.0"
+
+    // timber
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 }
