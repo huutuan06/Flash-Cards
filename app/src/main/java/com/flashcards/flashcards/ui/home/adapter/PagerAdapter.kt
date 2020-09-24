@@ -1,4 +1,4 @@
-package com.flashcards.flashcards.ui.home
+package com.flashcards.flashcards.ui.home.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter

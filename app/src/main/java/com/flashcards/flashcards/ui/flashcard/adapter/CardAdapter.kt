@@ -1,4 +1,4 @@
-package com.flashcards.flashcards.ui.flashcard
+package com.flashcards.flashcards.ui.flashcard.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

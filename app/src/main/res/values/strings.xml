@@ -6,7 +6,7 @@
     <string name="server_error">Cannot connect to server. Please try again later.</string>
     <string name="session_expired">Session expired. Please restart application</string>
 
-    <!-- Word -->
+    <!-- Vocabulary attributes -->
     <string name="label_en_title">English Title:\u0020</string>
     <string name="label_vn_title">Vietnamese Title:\u0020</string>
     <string name="label_type_word">Type:\u0020</string>
@@ -55,7 +55,7 @@
 
     <string name="anchor_item_progress">88.</string>
 
-    <!--Section Progress-->
+    <!--Section progress-->
     <string name="section_all">All</string>
     <string name="section_1">Section 1</string>
     <string name="section_2">Section 2</string>
@@ -63,4 +63,7 @@
     <string name="section_4">Section 4</string>
 
     <string name="result_summary">%d Passed, %d Failed, %d TBD</string>
+
+    <!-- Progress messages-->
+    <string name="all_progresses_already_passed">All progresses are already passed.</string>
 </resources>

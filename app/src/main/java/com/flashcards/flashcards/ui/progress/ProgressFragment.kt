@@ -2,6 +2,7 @@ package com.flashcards.flashcards.ui.progress
 
 import android.graphics.Rect
 import android.os.Bundle
+import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
@@ -12,6 +13,7 @@ import com.flashcards.flashcards.R
 import com.flashcards.flashcards.base.BaseFragment
 import com.flashcards.flashcards.databinding.FragmentProgressBinding
 import com.flashcards.flashcards.ui.navigator.ProgressNavigator
+import com.flashcards.flashcards.ui.progress.adapter.ProgressAdapter
 import com.flashcards.flashcards.ui.progress.helper.TestCaseProvider
 import com.flashcards.flashcards.ui.progress.model.Category
 import com.flashcards.flashcards.ui.progress.model.TestCase
@@ -106,7 +108,7 @@ class ProgressFragment : BaseFragment<FragmentProgressBinding, ProgressViewModel
     }
 
     override fun notifyAllTestsAlreadyPassed() {
-        //TODO
+        Toast.makeText(context, R.string.all_progresses_already_passed, Toast.LENGTH_LONG).show()
     }
 
     private fun goToTestFunction(testCase: TestCase) {
@@ -134,6 +136,7 @@ class ProgressFragment : BaseFragment<FragmentProgressBinding, ProgressViewModel
 
     private fun clearTest(testCase: TestCase) {
         if (testCase.isFullScreenTest) {
+            //TODO: Handle testcase is full screen test in this Fragment, NOT in Activity
 //            fragmentListener!!.onFragmentCallback(GEvent.Test.MainMenu)
         } else {
             clearAllFloatingFragment()
@@ -141,6 +144,7 @@ class ProgressFragment : BaseFragment<FragmentProgressBinding, ProgressViewModel
     }
 
     private fun clearAllFloatingFragment() {
+        // Currently, No Floating Fragment is used. This code just for enough cases.
         childFragmentManager.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
     }
 

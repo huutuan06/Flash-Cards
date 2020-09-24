@@ -1,4 +1,4 @@
-package com.flashcards.flashcards.ui.progress
+package com.flashcards.flashcards.ui.progress.adapter
 
 import android.view.LayoutInflater
 import android.view.View

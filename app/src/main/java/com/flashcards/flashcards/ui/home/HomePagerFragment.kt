@@ -5,6 +5,9 @@ import com.flashcards.flashcards.BR
 import com.flashcards.flashcards.R
 import com.flashcards.flashcards.base.BaseFragment
 import com.flashcards.flashcards.databinding.FragmentHomePagerBinding
+import com.flashcards.flashcards.ui.home.adapter.FLASH_CARD_PAGE_INDEX
+import com.flashcards.flashcards.ui.home.adapter.PROGRESS_SCREEN_INDEX
+import com.flashcards.flashcards.ui.home.adapter.PagerAdapter
 import com.flashcards.flashcards.viewmodel.ViewModelProviderFactory
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.android.support.DaggerAppCompatActivity
