@@ -3,12 +3,15 @@ package com.flashcards.flashcards.ui.progress
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.flashcards.flashcards.databinding.ItemProgressBinding
 import com.flashcards.flashcards.ui.progress.model.TestCase
+import com.flashcards.flashcards.util.gone
+import com.flashcards.flashcards.util.visible
 
 class ProgressAdapter (
     lifecycleOwner: LifecycleOwner,
@@ -38,6 +41,15 @@ class ProgressAdapter (
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = itemAt(position)
         holder.binding.testCase = item
+        holder.binding.progressBarWrapper.let {
+            it.removeAllViews()
+            if (item.isTesting) {
+                it.addView(ProgressBar(holder.itemView.context))
+                it.visible()
+            } else {
+                it.gone()
+            }
+        }
 
         with(holder.itemView) {
             tag = item
