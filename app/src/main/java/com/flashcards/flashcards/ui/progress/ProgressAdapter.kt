@@ -51,5 +51,9 @@ class ProgressAdapter (
         return listTestCase.value!![position]
     }
 
+    fun indexOf(testCase: TestCase): Int {
+        return listTestCase.value?.indexOf(testCase) ?: -1
+    }
+
     class ViewHolder(val binding: ItemProgressBinding) : RecyclerView.ViewHolder(binding.root)
 }

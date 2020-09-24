@@ -1,7 +1,7 @@
 package com.flashcards.flashcards.base
 
 import android.os.Bundle
-import android.util.Log
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +14,7 @@ import com.flashcards.flashcards.util.FcException
 import com.flashcards.flashcards.util.transform
 import dagger.android.support.DaggerFragment
 import io.reactivex.disposables.CompositeDisposable
+import timber.log.Timber
 
 abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFragment() {
 
@@ -21,6 +22,8 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFrag
     protected lateinit var binding: T
     protected lateinit var mViewModel: V
     protected val compositeDisposable = CompositeDisposable()
+
+    protected val mHandler = Handler()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -59,7 +62,7 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFrag
 //            FcException.GenericError -> {
 //                Toast.makeText(context, throwable.message ?: "Exception occur. Please try again later", Toast.LENGTH_SHORT).show()
 //            }
-            else -> Log.e("Activity","Cannot handle exception: ${throwable.printStackTrace()}")
+            else -> Timber.e("Cannot handle exception: ${throwable.printStackTrace()}")
         }
     }
 

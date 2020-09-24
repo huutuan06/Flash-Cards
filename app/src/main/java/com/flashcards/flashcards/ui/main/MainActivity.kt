@@ -6,8 +6,6 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.flashcards.flashcards.R
 import com.flashcards.flashcards.databinding.ActivityMainBinding
-import com.flashcards.flashcards.ui.progress.ProgressPersistence
-import com.flashcards.flashcards.ui.progress.helper.TestCaseProvider
 import dagger.android.support.DaggerAppCompatActivity
 
 class MainActivity : DaggerAppCompatActivity() {

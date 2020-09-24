@@ -1,9 +1,11 @@
 package com.flashcards.flashcards.ui.progress
 
+import android.graphics.Rect
 import android.os.Bundle
-import android.widget.Toast
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.flashcards.flashcards.BR
 import com.flashcards.flashcards.R
@@ -11,10 +13,12 @@ import com.flashcards.flashcards.base.BaseFragment
 import com.flashcards.flashcards.databinding.FragmentProgressBinding
 import com.flashcards.flashcards.ui.navigator.ProgressNavigator
 import com.flashcards.flashcards.ui.progress.helper.TestCaseProvider
+import com.flashcards.flashcards.ui.progress.model.Category
 import com.flashcards.flashcards.ui.progress.model.TestCase
 import com.flashcards.flashcards.ui.progress.model.TestType
 import com.flashcards.flashcards.util.NoScrollLinearLayoutManager
 import com.flashcards.flashcards.viewmodel.ViewModelProviderFactory
+import timber.log.Timber
 import javax.inject.Inject
 import kotlin.random.Random
 
@@ -40,6 +44,35 @@ class ProgressFragment : BaseFragment<FragmentProgressBinding, ProgressViewModel
 
     override fun initViews() {
         setupRecyclerView()
+
+        compositeDisposable.add(mViewModel.observableAction.subscribe { event ->
+            when (event){
+                is ProgressViewModel.Event.DoTest -> {
+                    Timber.d("initViews -- DoTest ${event.testCase}")
+                    if (isResumed) {
+                        goToTestFunction(event.testCase)
+                    } else {
+                        mViewModel.liveDataStartTest.value = event.testCase
+                    }
+                }
+                is ProgressViewModel.Event.FinishTest -> {
+                    Timber.d("initViews -- FinishTest ${event.testCase}")
+                    if (isResumed) {
+                        clearTest(event.testCase)
+                    } else{
+                        mViewModel.liveDataFinishTest.value = event.testCase
+                    }
+                }
+                is ProgressViewModel.Event.FinishTesting -> {
+                    //Scroll to the last tested item
+                    mViewModel.testCaseAll.value!!.last { it.isTested }.let {
+                        mHandler.postDelayed({
+                            scrollItem(it)
+                        }, 300)
+                    }
+                }
+            }
+        })
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,6 +105,10 @@ class ProgressFragment : BaseFragment<FragmentProgressBinding, ProgressViewModel
         goToTestFunction(testCase)
     }
 
+    override fun notifyAllTestsAlreadyPassed() {
+        //TODO
+    }
+
     private fun goToTestFunction(testCase: TestCase) {
         when (testCase.type) {
             TestType.VIBRATOR -> setRandomTestResult(TestType.VIBRATOR)
@@ -92,6 +129,46 @@ class ProgressFragment : BaseFragment<FragmentProgressBinding, ProgressViewModel
         val result = Random.nextBoolean()
         mTestFunctions.first { it.type == testType }.apply {
             persistence.updateTestResult(this, result)
+        }
+    }
+
+    private fun clearTest(testCase: TestCase) {
+        if (testCase.isFullScreenTest) {
+//            fragmentListener!!.onFragmentCallback(GEvent.Test.MainMenu)
+        } else {
+            clearAllFloatingFragment()
+        }
+    }
+
+    private fun clearAllFloatingFragment() {
+        childFragmentManager.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+    }
+
+    private fun scrollItem(testCase: TestCase) {
+        mHandler.post {
+            when (testCase.category) {
+                Category.Category1 -> binding.rv1
+                Category.Category2 -> binding.rv2
+                Category.Category3 -> binding.rv3
+                Category.Category4 -> binding.rv4
+            }.let { recyclerView ->
+                (recyclerView.adapter as ProgressAdapter).indexOf(testCase)
+                    .takeIf { it > 0 }
+                    ?.let {
+                        (recyclerView.layoutManager as LinearLayoutManager).getChildAt(it)
+                    }
+                    ?.takeUnless { itemView ->
+                        val scrollBounds = Rect()
+                        binding.scrollViewParent.getDrawingRect(scrollBounds)
+                        val top = itemView.y + recyclerView.y
+                        val bottom = top + itemView.height
+
+                        scrollBounds.top < top && scrollBounds.bottom > bottom
+                    }
+                    ?.bottom
+            }?.let {
+                binding.scrollViewParent.smoothScrollTo(0, it)
+            }
         }
     }
 }
