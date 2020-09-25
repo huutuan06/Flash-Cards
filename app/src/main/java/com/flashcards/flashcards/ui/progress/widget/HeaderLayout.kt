@@ -1,4 +1,4 @@
-package com.flashcards.flashcards.ui.progress.Widget
+package com.flashcards.flashcards.ui.progress.widget
 
 import android.animation.ValueAnimator
 import android.content.Context

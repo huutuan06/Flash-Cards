@@ -18,7 +18,7 @@ class ProgressPersistence constructor(
     @IgnoredOnParcel var autoGoToMainScreenOnSuccess = false
     @IgnoredOnParcel var autoGoToMainScreenOnFail = false
 
-    @IgnoredOnParcel var dialogSupperBackpress = true
+    @IgnoredOnParcel var dialogSupperBackPress = true
 
     @IgnoredOnParcel var isContinuesTest = true
 

@@ -12,7 +12,7 @@
             />
     </data>
 
-    <com.flashcards.flashcards.ui.progress.Widget.HeaderLayout
+    <com.flashcards.flashcards.ui.progress.widget.HeaderLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="2dp"
@@ -58,5 +58,5 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="1/12"
             />
-    </com.flashcards.flashcards.ui.progress.Widget.HeaderLayout>
+    </com.flashcards.flashcards.ui.progress.widget.HeaderLayout>
 </layout>

@@ -6,7 +6,7 @@ import androidx.annotation.DrawableRes
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.flashcards.flashcards.service.model.Vocabulary
-import com.flashcards.flashcards.ui.progress.Widget.HeaderLayout
+import com.flashcards.flashcards.ui.progress.widget.HeaderLayout
 import com.flashcards.flashcards.ui.progress.model.SectionHeader
 
 @BindingAdapter("android:visibility")
