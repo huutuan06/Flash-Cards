@@ -3,7 +3,6 @@ package com.flashcards.flashcards.base
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,8 +20,13 @@ import timber.log.Timber
 abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFragment() {
 
     private lateinit var mRootView: View
-    protected lateinit var binding: T
+
+    protected val binding: T
+        get() = _binding!!
+    private var _binding: T? = null
+
     protected lateinit var mViewModel: V
+
     protected val compositeDisposable = CompositeDisposable()
 
     protected val mHandler = Handler()
@@ -47,7 +51,7 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFrag
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
+        _binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
         mRootView = binding.root
         initViews()
         return mRootView
@@ -103,6 +107,7 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFrag
     override fun onDestroy() {
         Timber.tag("LifeCycle").d("${fragmentTag()} -- onDestroy")
         compositeDisposable.dispose()
+        _binding = null
         super.onDestroy()
     }
 
