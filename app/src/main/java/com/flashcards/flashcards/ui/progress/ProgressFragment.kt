@@ -175,4 +175,13 @@ class ProgressFragment : BaseFragment<FragmentProgressBinding, ProgressViewModel
             }
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        binding.rv1.adapter = null
+        binding.rv2.adapter = null
+        binding.rv3.adapter = null
+        binding.rv4.adapter = null
+    }
 }

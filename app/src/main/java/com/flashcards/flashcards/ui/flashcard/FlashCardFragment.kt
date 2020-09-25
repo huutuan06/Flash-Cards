@@ -84,4 +84,10 @@ class FlashCardFragment : BaseFragment<FragmentFlashcardBinding, FlashCardViewMo
             }
         })
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        binding.recyclerViewVocabularies.adapter = null
+    }
 }

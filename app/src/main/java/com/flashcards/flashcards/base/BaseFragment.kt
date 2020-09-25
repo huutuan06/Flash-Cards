@@ -106,8 +106,10 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFrag
 
     override fun onDestroy() {
         Timber.tag("LifeCycle").d("${fragmentTag()} -- onDestroy")
+
         compositeDisposable.dispose()
         _binding = null
+
         super.onDestroy()
     }
 
