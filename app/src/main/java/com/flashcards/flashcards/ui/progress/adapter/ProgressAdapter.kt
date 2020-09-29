@@ -13,7 +13,7 @@ import com.flashcards.flashcards.ui.progress.model.TestCase
 import com.flashcards.flashcards.util.gone
 import com.flashcards.flashcards.util.visible
 
-class ProgressAdapter (
+class ProgressAdapter(
     lifecycleOwner: LifecycleOwner,
     private val onItemClick: (TestCase) -> Unit,
     private val listTestCase: LiveData<List<TestCase>>
@@ -59,7 +59,7 @@ class ProgressAdapter (
 
     override fun getItemCount(): Int = listTestCase.value?.size ?: 0
 
-    private fun itemAt(position: Int) : TestCase {
+    private fun itemAt(position: Int): TestCase {
         return listTestCase.value!![position]
     }
 

@@ -12,7 +12,7 @@ class PagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
     private val tabFragmentCreator: Map<Int, () -> Fragment> = mapOf(
         FLASH_CARD_PAGE_INDEX to { FlashCardFragment() },
-        PROGRESS_SCREEN_INDEX to { ProgressFragment()}
+        PROGRESS_SCREEN_INDEX to { ProgressFragment() }
     )
 
     override fun getItemCount(): Int = tabFragmentCreator.size

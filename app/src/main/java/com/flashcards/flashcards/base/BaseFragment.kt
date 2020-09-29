@@ -31,7 +31,7 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFrag
 
     protected val mHandler = Handler()
 
-    private fun fragmentTag(): String =this.javaClass.simpleName
+    private fun fragmentTag(): String = this.javaClass.simpleName
 
     //region lifecycle
     override fun onAttach(context: Context) {
@@ -122,13 +122,13 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFrag
     protected fun handleException(throwable: Throwable) {
         when (throwable.transform()) {
             FcException.NoConnectivityError.DeviceError -> {
-                Toast.makeText(context, R.string.no_internet_error, Toast.LENGTH_LONG).show()
+                toast(R.string.no_internet_error)
             }
             FcException.NoConnectivityError.ServerError -> {
-                Toast.makeText(context, R.string.server_error, Toast.LENGTH_LONG).show()
+                toast(R.string.server_error)
             }
             FcException.SessionExpiredError -> {
-                Toast.makeText(context, R.string.session_expired, Toast.LENGTH_LONG).show()
+                toast(R.string.session_expired)
             }
 //            FcException.GenericError -> {
 //                Toast.makeText(context, throwable.message ?: "Exception occur. Please try again later", Toast.LENGTH_SHORT).show()
@@ -155,7 +155,7 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFrag
     @LayoutRes
     abstract fun getLayoutId(): Int
 
-    abstract fun getBindingVariable() : Int
+    abstract fun getBindingVariable(): Int
 
     abstract fun getViewModel(): V
 

@@ -13,7 +13,7 @@ class MainActivity : DaggerAppCompatActivity() {
     private lateinit var mNavHostFragment: NavHostFragment
     private lateinit var mNavController: NavController
 
-    private var mActivityMainBinding: ActivityMainBinding?= null
+    private var mActivityMainBinding: ActivityMainBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

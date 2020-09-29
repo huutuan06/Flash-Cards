@@ -22,7 +22,7 @@ class FlashCardViewModel @Inject constructor(iService: IService) : BaseViewModel
     val word = MutableLiveData<Vocabulary>()
 
     private val eventAction = PublishSubject.create<Event>()
-    val observableAction : Observable<Event> = eventAction.hide()
+    val observableAction: Observable<Event> = eventAction.hide()
 
     init {
         disposable.add(iService.getAllVocabularies()

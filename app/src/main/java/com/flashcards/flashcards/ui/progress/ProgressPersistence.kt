@@ -13,20 +13,27 @@ class ProgressPersistence constructor(
     val testCases: List<TestCase>,
     var currentTestCaseIndex: Int = -1
 ) : Parcelable {
-    @IgnoredOnParcel var autoAdvanceToNextTest = false
-    @IgnoredOnParcel var autoRetake = false
-    @IgnoredOnParcel var autoGoToMainScreenOnSuccess = false
-    @IgnoredOnParcel var autoGoToMainScreenOnFail = false
+    @IgnoredOnParcel
+    var autoAdvanceToNextTest = false
+    @IgnoredOnParcel
+    var autoRetake = false
+    @IgnoredOnParcel
+    var autoGoToMainScreenOnSuccess = false
+    @IgnoredOnParcel
+    var autoGoToMainScreenOnFail = false
 
-    @IgnoredOnParcel var dialogSupperBackPress = true
+    @IgnoredOnParcel
+    var dialogSupperBackPress = true
 
-    @IgnoredOnParcel var isContinuesTest = true
+    @IgnoredOnParcel
+    var isContinuesTest = true
 
     //region rx observable
     @IgnoredOnParcel
     private val testCasesSubject = BehaviorSubject.create<List<TestCase>>()
+
     @IgnoredOnParcel
-    val testCasesObservable : Observable<List<TestCase>> = testCasesSubject.hide()
+    val testCasesObservable: Observable<List<TestCase>> = testCasesSubject.hide()
 
     fun notifyUpdateTestCases() {
         testCasesSubject.onNext(this.testCases)
@@ -34,8 +41,9 @@ class ProgressPersistence constructor(
 
     @IgnoredOnParcel
     private val testResultSubject = BehaviorSubject.create<TestCase>()
+
     @IgnoredOnParcel
-    val testResultObservable : Observable<TestCase> = testResultSubject.hide()
+    val testResultObservable: Observable<TestCase> = testResultSubject.hide()
 
     fun updateTestResult(testCase: TestCase, result: Boolean) {
         testCase.isSuccess = result

@@ -1,11 +1,9 @@
 package com.flashcards.flashcards.ui.progress.helper
 
 import android.content.Context
-import androidx.annotation.StringRes
 import com.flashcards.flashcards.R
 import com.flashcards.flashcards.ui.progress.model.TestCase
 import com.flashcards.flashcards.ui.progress.model.TestType
-import java.lang.IllegalArgumentException
 import javax.inject.Inject
 
 class TestCaseProvider @Inject constructor(

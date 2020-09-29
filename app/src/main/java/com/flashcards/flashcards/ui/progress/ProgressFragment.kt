@@ -48,7 +48,7 @@ class ProgressFragment : BaseFragment<FragmentProgressBinding, ProgressViewModel
         setupRecyclerView()
 
         compositeDisposable.add(mViewModel.observableAction.subscribe { event ->
-            when (event){
+            when (event) {
                 is ProgressViewModel.Event.DoTest -> {
                     Timber.d("initViews -- DoTest ${event.testCase}")
                     if (isResumed) {
@@ -61,7 +61,7 @@ class ProgressFragment : BaseFragment<FragmentProgressBinding, ProgressViewModel
                     Timber.d("initViews -- FinishTest ${event.testCase}")
                     if (isResumed) {
                         clearTest(event.testCase)
-                    } else{
+                    } else {
                         mViewModel.liveDataFinishTest.value = event.testCase
                     }
                 }
