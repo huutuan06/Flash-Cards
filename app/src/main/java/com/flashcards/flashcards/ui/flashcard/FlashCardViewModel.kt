@@ -10,7 +10,7 @@ import io.reactivex.subjects.PublishSubject
 import timber.log.Timber
 import javax.inject.Inject
 
-class FlashCardViewModel @Inject constructor(iService: IService) : BaseViewModel() {
+class FlashCardViewModel @Inject constructor(val iService: IService) : BaseViewModel() {
 
     sealed class Event {
         data class Error(val throwable: Throwable) : Event()
@@ -25,6 +25,10 @@ class FlashCardViewModel @Inject constructor(iService: IService) : BaseViewModel
     val observableAction: Observable<Event> = eventAction.hide()
 
     init {
+        getVocabularies()
+    }
+
+    fun getVocabularies() {
         disposable.add(iService.getAllVocabularies()
             .applyIOScheduler()
             .doOnSubscribe {
