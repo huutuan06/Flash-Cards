@@ -15,8 +15,6 @@ class JetpackFragment : BaseFragment<FragmentJetpackBinding, JetpackViewModel>()
 
     override fun getLayoutId(): Int = R.layout.fragment_jetpack
 
-    override fun getBindingVariable(): Int = BR.jetpackViewModel
-
     override fun getViewModel(): JetpackViewModel =
         ViewModelProvider(this, viewModelProviderFactory).get(JetpackViewModel::class.java)
 }

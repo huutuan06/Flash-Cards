@@ -26,6 +26,8 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFrag
         get() = _binding!!
     private var _binding: T? = null
 
+    private var bindingVariable : Int = BR.viewModel
+
     protected lateinit var mViewModel: V
 
     protected val compositeDisposable = CompositeDisposable()
@@ -62,7 +64,7 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFrag
         super.onViewCreated(view, savedInstanceState)
         Timber.tag("LifeCycle").d("${fragmentTag()} -- onViewCreated")
 
-        binding.setVariable(getBindingVariable(), mViewModel)
+        binding.setVariable(bindingVariable, mViewModel)
         binding.lifecycleOwner = this
         binding.executePendingBindings()
     }
@@ -155,8 +157,6 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFrag
 
     @LayoutRes
     abstract fun getLayoutId(): Int
-
-    abstract fun getBindingVariable(): Int
 
     abstract fun getViewModel(): V
 

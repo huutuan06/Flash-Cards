@@ -21,8 +21,6 @@ class HomePagerFragment : BaseFragment<FragmentHomePagerBinding, HomePagerViewMo
 
     override fun getLayoutId(): Int = R.layout.fragment_home_pager
 
-    override fun getBindingVariable(): Int = BR.homePagerViewModel
-
     override fun getViewModel(): HomePagerViewModel =
         ViewModelProvider(this, viewModelProviderFactory).get(
             HomePagerViewModel::class.java

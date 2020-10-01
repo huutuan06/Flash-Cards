@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="jetpackViewModel"
+            name="viewModel"
             type="com.flashcards.flashcards.ui.jetpack.JetpackViewModel"
             />
     </data>

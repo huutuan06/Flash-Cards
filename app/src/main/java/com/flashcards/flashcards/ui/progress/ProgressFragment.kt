@@ -39,8 +39,6 @@ class ProgressFragment : BaseFragment<FragmentProgressBinding, ProgressViewModel
 
     override fun getLayoutId(): Int = R.layout.fragment_progress
 
-    override fun getBindingVariable(): Int = BR.progressViewModel
-
     override fun getViewModel(): ProgressViewModel =
         ViewModelProvider(this, viewModelProviderFactory).get(ProgressViewModel::class.java)
 

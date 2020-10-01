@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="flashcardViewModel"
+            name="viewModel"
             type="com.flashcards.flashcards.ui.flashcard.FlashCardViewModel"
             />
     </data>
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:contentDescription="@null"
             android:src="@drawable/ic_no_internet"
-            android:visibility="@{flashcardViewModel.listVocabularies == null &amp;&amp; flashcardViewModel.isLoading == false}"
+            android:visibility="@{viewModel.listVocabularies == null &amp;&amp; viewModel.isLoading == false}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:wordInfo="@{flashcardViewModel.word}"
+            app:wordInfo="@{viewModel.word}"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

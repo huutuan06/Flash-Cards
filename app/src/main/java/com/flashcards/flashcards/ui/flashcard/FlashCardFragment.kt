@@ -23,8 +23,6 @@ class FlashCardFragment : BaseFragment<FragmentFlashcardBinding, FlashCardViewMo
 
     override fun getLayoutId(): Int = R.layout.fragment_flashcard
 
-    override fun getBindingVariable(): Int = BR.flashcardViewModel
-
     override fun getViewModel(): FlashCardViewModel =
         ViewModelProvider(this, viewModelProviderFactory).get(FlashCardViewModel::class.java)
 
