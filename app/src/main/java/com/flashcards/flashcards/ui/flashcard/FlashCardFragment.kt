@@ -1,6 +1,5 @@
 package com.flashcards.flashcards.ui.flashcard
 
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,7 +28,7 @@ class FlashCardFragment : BaseFragment<FragmentFlashcardBinding, FlashCardViewMo
     override fun getViewModel(): FlashCardViewModel =
         ViewModelProvider(this, viewModelProviderFactory).get(FlashCardViewModel::class.java)
 
-    lateinit var cardAdapter: CardAdapter
+    private lateinit var cardAdapter: CardAdapter
 
     override fun initViews() {
         initRecyclerView()

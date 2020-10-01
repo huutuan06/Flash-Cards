@@ -12,4 +12,3 @@ class ViewModelProviderFactory @Inject constructor(
     @Suppress("unchecked_cast")
     override fun <T : ViewModel> create(modelClass: Class<T>) = viewModels[modelClass]?.get() as T
 }
-

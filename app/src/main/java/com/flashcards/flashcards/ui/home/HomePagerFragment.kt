@@ -6,6 +6,7 @@ import com.flashcards.flashcards.R
 import com.flashcards.flashcards.base.BaseFragment
 import com.flashcards.flashcards.databinding.FragmentHomePagerBinding
 import com.flashcards.flashcards.ui.home.adapter.FLASH_CARD_PAGE_INDEX
+import com.flashcards.flashcards.ui.home.adapter.JECKPACK_PAGE_INDEX
 import com.flashcards.flashcards.ui.home.adapter.PROGRESS_SCREEN_INDEX
 import com.flashcards.flashcards.ui.home.adapter.PagerAdapter
 import com.flashcards.flashcards.viewmodel.ViewModelProviderFactory
@@ -45,6 +46,7 @@ class HomePagerFragment : BaseFragment<FragmentHomePagerBinding, HomePagerViewMo
         return when (position) {
             FLASH_CARD_PAGE_INDEX -> R.drawable.garden_tab_selector
             PROGRESS_SCREEN_INDEX -> R.drawable.plant_list_tab_selector
+            JECKPACK_PAGE_INDEX -> R.drawable.garden_tab_selector
             else -> throw IndexOutOfBoundsException()
         }
     }
@@ -53,6 +55,7 @@ class HomePagerFragment : BaseFragment<FragmentHomePagerBinding, HomePagerViewMo
         return when (position) {
             FLASH_CARD_PAGE_INDEX -> getString(R.string.app_name)
             PROGRESS_SCREEN_INDEX -> getString(R.string.progress_title)
+            JECKPACK_PAGE_INDEX -> getString(R.string.jetpack_title)
             else -> throw IndexOutOfBoundsException()
         }
     }

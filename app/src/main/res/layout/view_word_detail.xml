@@ -36,8 +36,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_en_title"
-                    android:textStyle="bold"
                     android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
                     />
 
                 <TextView
@@ -45,8 +45,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{wordInfo.englishTitle}"
-                    android:textStyle="bold"
                     android:textColor="@color/colorPrimaryDark"
+                    android:textStyle="bold"
                     />
             </LinearLayout>
 
@@ -60,8 +60,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_vn_title"
-                    android:textStyle="bold"
                     android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
                     />
 
                 <TextView
@@ -83,8 +83,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_type_word"
-                    android:textStyle="bold"
                     android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
                     />
 
                 <TextView
@@ -106,8 +106,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_context_word"
-                    android:textStyle="bold"
                     android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
                     />
 
                 <TextView
@@ -129,8 +129,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_example"
-                    android:textStyle="bold"
                     android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
                     />
 
                 <TextView
@@ -152,6 +152,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
                     android:src="@drawable/ic_direct_to_detail"
+                    android:contentDescription="@null"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"

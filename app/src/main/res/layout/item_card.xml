@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
     <data>
 
@@ -10,8 +12,7 @@
             />
     </data>
 
-    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="3dp"
@@ -43,8 +44,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_en_title"
-                    android:textStyle="bold"
                     android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
                     />
 
                 <TextView
@@ -67,8 +68,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_vn_title"
-                    android:textStyle="bold"
                     android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
                     />
 
                 <TextView
@@ -90,8 +91,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_type_word"
-                    android:textStyle="bold"
                     android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
                     />
 
                 <TextView
@@ -113,8 +114,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_context_word"
-                    android:textStyle="bold"
                     android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
                     />
 
                 <TextView
@@ -136,8 +137,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_example"
-                    android:textStyle="bold"
                     android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
                     />
 
                 <TextView

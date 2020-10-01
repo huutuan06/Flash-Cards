@@ -10,7 +10,7 @@ import io.reactivex.subjects.PublishSubject
 import timber.log.Timber
 import javax.inject.Inject
 
-class FlashCardViewModel @Inject constructor(val iService: IService) : BaseViewModel() {
+class FlashCardViewModel @Inject constructor(private val iService: IService) : BaseViewModel() {
 
     sealed class Event {
         data class Error(val throwable: Throwable) : Event()
