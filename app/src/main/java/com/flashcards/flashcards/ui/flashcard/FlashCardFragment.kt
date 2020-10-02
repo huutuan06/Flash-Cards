@@ -4,7 +4,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.flashcards.flashcards.BR
 import com.flashcards.flashcards.R
 import com.flashcards.flashcards.base.BaseFragment
 import com.flashcards.flashcards.databinding.FragmentFlashcardBinding

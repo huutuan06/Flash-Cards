@@ -1,7 +1,6 @@
 package com.flashcards.flashcards.ui.home
 
 import androidx.lifecycle.ViewModelProvider
-import com.flashcards.flashcards.BR
 import com.flashcards.flashcards.R
 import com.flashcards.flashcards.base.BaseFragment
 import com.flashcards.flashcards.databinding.FragmentHomePagerBinding

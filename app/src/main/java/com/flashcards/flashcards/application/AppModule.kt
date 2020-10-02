@@ -4,7 +4,9 @@ import android.app.Application
 import android.content.Context
 import com.flashcards.flashcards.service.connect.TrustHTTPS
 import com.flashcards.flashcards.service.repository.IService
+import com.flashcards.flashcards.service.repository.IServiceCoroutines
 import com.flashcards.flashcards.util.APIConstant
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -52,7 +54,7 @@ class AppModule {
 
     @Singleton
     @Provides
-    internal fun provideRetrofitInstance(trustHTTPS: TrustHTTPS,client: OkHttpClient.Builder): Retrofit {
+    internal fun provideRetrofitInstance(trustHTTPS: TrustHTTPS, client: OkHttpClient.Builder): Retrofit {
         trustHTTPS.intializeCertificate()
         return Retrofit.Builder()
             .baseUrl(APIConstant.BASE_URL)
@@ -66,5 +68,17 @@ class AppModule {
     @Provides
     fun provideIService(retrofit: Retrofit): IService {
         return retrofit.create(IService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideIServiceCoroutines(client: OkHttpClient.Builder): IServiceCoroutines {
+        val retrofit = Retrofit.Builder()
+            .baseUrl(APIConstant.BASE_URL)
+            .client(client.build())
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
+            .build()
+        return retrofit.create(IServiceCoroutines::class.java)
     }
 }
