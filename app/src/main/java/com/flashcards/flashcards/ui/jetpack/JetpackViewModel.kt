@@ -23,9 +23,7 @@ class JetpackViewModel @Inject constructor(
         var result: Vocabulary
 
         withContext(Dispatchers.IO) {
-            result = withContext(Dispatchers.IO) {
-                iServiceCoroutines.getAllVocabulariesAsync().await().random()
-            }
+            result = iServiceCoroutines.getAllVocabulariesAsync().await().random()
         }
 
         withContext(Dispatchers.Main) {
