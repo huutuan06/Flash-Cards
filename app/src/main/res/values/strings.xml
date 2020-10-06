@@ -67,4 +67,8 @@
 
     <!-- Progress messages-->
     <string name="all_progresses_already_passed">All progresses are already passed.</string>
+
+    <string name="label_from_server">From Server</string>
+    <string name="label_from_local">From Local</string>
+    <string name="get_data">Get Data</string>
 </resources>

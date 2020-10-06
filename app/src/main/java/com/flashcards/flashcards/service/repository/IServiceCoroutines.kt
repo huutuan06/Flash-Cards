@@ -1,7 +1,6 @@
 package com.flashcards.flashcards.service.repository
 
-import com.flashcards.flashcards.service.model.Vocabulary
-import io.reactivex.Observable
+import com.flashcards.flashcards.database.entities.Vocabulary
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 

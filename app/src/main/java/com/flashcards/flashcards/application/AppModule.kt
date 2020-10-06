@@ -2,6 +2,8 @@ package com.flashcards.flashcards.application
 
 import android.app.Application
 import android.content.Context
+import androidx.room.Room
+import com.flashcards.flashcards.database.MainDatabase
 import com.flashcards.flashcards.service.connect.TrustHTTPS
 import com.flashcards.flashcards.service.repository.IService
 import com.flashcards.flashcards.service.repository.IServiceCoroutines
@@ -80,5 +82,11 @@ class AppModule {
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .build()
         return retrofit.create(IServiceCoroutines::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideMainDatabase(context: Context): MainDatabase {
+        return Room.databaseBuilder(context, MainDatabase::class.java, "AppDB").build()
     }
 }

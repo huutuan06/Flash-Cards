@@ -60,7 +60,7 @@ class FlashCardFragment : BaseFragment<FragmentFlashcardBinding, FlashCardViewMo
     private fun initSwipeToRefresh() {
         binding.swipeFresh.setOnRefreshListener {
             binding.swipeFresh.isRefreshing = false
-            mViewModel.getVocabularies()
+            mViewModel.getVocabulariesAndSaveData()
         }
     }
 

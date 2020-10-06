@@ -8,7 +8,7 @@
 
         <variable
             name="vocabulary"
-            type="com.flashcards.flashcards.service.model.Vocabulary"
+            type="com.flashcards.flashcards.database.entities.Vocabulary"
             />
     </data>
 

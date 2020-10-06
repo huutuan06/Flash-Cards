@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.flashcards.flashcards.databinding.ItemCardBinding
-import com.flashcards.flashcards.service.model.Vocabulary
+import com.flashcards.flashcards.database.entities.Vocabulary
 
 class CardAdapter(
     lifecycleOwner: LifecycleOwner,
@@ -65,7 +65,7 @@ class CardAdapter(
 private class CardDiffCallback : DiffUtil.ItemCallback<Vocabulary>() {
 
     override fun areItemsTheSame(oldItem: Vocabulary, newItem: Vocabulary): Boolean {
-        return oldItem.englishTitle == newItem.englishTitle
+        return oldItem.id == newItem.id
     }
 
     @SuppressLint("DiffUtilEquals")

@@ -5,7 +5,7 @@ import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
-import com.flashcards.flashcards.service.model.Vocabulary
+import com.flashcards.flashcards.database.entities.Vocabulary
 import com.flashcards.flashcards.ui.progress.widget.HeaderLayout
 import com.flashcards.flashcards.ui.progress.model.SectionHeader
 

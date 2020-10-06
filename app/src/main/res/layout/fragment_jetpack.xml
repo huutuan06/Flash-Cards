@@ -27,6 +27,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/ln_layout_2"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.5"
             >
 
             <TextView
@@ -35,14 +36,16 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/font_size_big"
                 android:textStyle="bold"
-                tools:text="From Server"
+                android:text="@string/label_from_server"
+                android:textColor="@color/blue400"
                 />
 
             <Button
                 android:id="@+id/btn_get_data_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Get data"
+                android:text="@string/get_data"
+                android:onClick="@{() -> viewModel.onClick1()}"
                 />
 
             <TextView
@@ -51,6 +54,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/font_size_big"
                 android:textStyle="bold"
+                android:text="@{viewModel.randomVoca1.englishTitle.toString()}"
+                android:textColor="@color/blue400"
                 tools:text="Text 1"
                 />
         </LinearLayout>
@@ -64,6 +69,7 @@
             app:layout_constraintLeft_toRightOf="@id/ln_layout_1"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.5"
             >
 
             <TextView
@@ -72,17 +78,16 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/font_size_big"
                 android:textStyle="bold"
-                app:layout_constraintLeft_toRightOf="@id/tv_server"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="From Room"
+                android:text="@string/label_from_local"
+                android:textColor="@color/blue400"
                 />
 
             <Button
                 android:id="@+id/btn_get_data_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Get data"
+                android:text="@string/get_data"
+                android:onClick="@{() -> viewModel.onClick2()}"
                 />
 
             <TextView
@@ -91,23 +96,21 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/font_size_big"
                 android:textStyle="bold"
+                android:text="@{viewModel.randomVoca2.englishTitle.toString()}"
+                android:textColor="@color/blue400"
                 tools:text="Text 2"
                 />
         </LinearLayout>
 
-        <TextView
+        <ImageView
+            android:id="@+id/img_voca"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/space_8dp"
-            android:layout_marginRight="@dimen/space_8dp"
-            android:text="@{viewModel.randomVoca.englishTitle.toString()}"
-            android:textAlignment="center"
-            android:textSize="40sp"
+            android:contentDescription="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Title"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
