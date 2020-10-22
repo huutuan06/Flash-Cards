@@ -2,17 +2,22 @@ package com.flashcards.flashcards.ui.progress
 
 import androidx.lifecycle.ViewModel
 import com.flashcards.flashcards.di.ViewModelKey
-import com.flashcards.flashcards.di.scope.ActivityScope
-import com.flashcards.flashcards.di.scope.FragmentScope
-import com.flashcards.flashcards.ui.main.MainActivity
 import com.flashcards.flashcards.ui.navigator.ProgressNavigator
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
+import dagger.android.ContributesAndroidInjector
 import dagger.multibindings.IntoMap
 
+@Module
+abstract class ProgressInjector {
+
+    @ContributesAndroidInjector(modules = [ProgressModule::class, ProgressPersistenceModule::class])
+    abstract fun provideProgressFragment(): ProgressFragment
+}
+
 @Module(includes = [ProgressPersistenceModule::class])
-abstract class ProgressViewModelModule {
+abstract class ProgressModule {
 
     @Binds
     @IntoMap

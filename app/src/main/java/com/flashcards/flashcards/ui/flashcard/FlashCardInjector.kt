@@ -4,10 +4,18 @@ import androidx.lifecycle.ViewModel
 import com.flashcards.flashcards.di.ViewModelKey
 import dagger.Binds
 import dagger.Module
+import dagger.android.ContributesAndroidInjector
 import dagger.multibindings.IntoMap
 
 @Module
-abstract class FlashCardViewModelModule {
+abstract class FlashCardInjector {
+
+    @ContributesAndroidInjector(modules = [FlashCardModule::class])
+    abstract fun provideFlashCardFragment(): FlashCardFragment
+}
+
+@Module
+abstract class FlashCardModule {
 
     @Binds
     @IntoMap

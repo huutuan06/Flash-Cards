@@ -4,10 +4,18 @@ import androidx.lifecycle.ViewModel
 import com.flashcards.flashcards.di.ViewModelKey
 import dagger.Binds
 import dagger.Module
+import dagger.android.ContributesAndroidInjector
 import dagger.multibindings.IntoMap
 
 @Module
-abstract class JetpackViewModelModule {
+abstract class JetpackInjector {
+
+    @ContributesAndroidInjector(modules = [JetpackModule::class])
+    abstract fun provideJetPackFragment(): JetpackFragment
+}
+
+@Module
+abstract class JetpackModule {
 
     @Binds
     @IntoMap
