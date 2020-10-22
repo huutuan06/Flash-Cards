@@ -20,7 +20,7 @@
 
         <LinearLayout
             android:id="@+id/ln_layout_1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
@@ -28,6 +28,7 @@
             app:layout_constraintRight_toLeftOf="@id/ln_layout_2"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_percent="0.5"
+            app:layout_constraintHorizontal_weight="1"
             >
 
             <TextView
@@ -54,6 +55,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/font_size_big"
                 android:textStyle="bold"
+                android:textAlignment="center"
                 android:text="@{viewModel.randomVoca1.englishTitle.toString()}"
                 android:textColor="@color/blue400"
                 tools:text="Text 1"
@@ -62,7 +64,7 @@
 
         <LinearLayout
             android:id="@+id/ln_layout_2"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
@@ -70,6 +72,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_percent="0.5"
+            app:layout_constraintHorizontal_weight="1"
             >
 
             <TextView
@@ -96,6 +99,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/font_size_big"
                 android:textStyle="bold"
+                android:textAlignment="center"
                 android:text="@{viewModel.randomVoca2.englishTitle.toString()}"
                 android:textColor="@color/blue400"
                 tools:text="Text 2"
