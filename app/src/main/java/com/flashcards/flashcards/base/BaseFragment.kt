@@ -3,6 +3,7 @@ package com.flashcards.flashcards.base
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,7 +33,7 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFrag
 
     protected val compositeDisposable = CompositeDisposable()
 
-    protected val mHandler = Handler()
+    protected val mHandler = Handler(Looper.myLooper() ?: Looper.getMainLooper())
 
     private fun fragmentTag(): String = this.javaClass.simpleName
 
