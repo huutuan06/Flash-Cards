@@ -1,4 +1,4 @@
-package com.flashcards.flashcards.service.repository
+package com.flashcards.flashcards.api.repository
 
 import com.flashcards.flashcards.database.entities.Vocabulary
 import io.reactivex.Observable

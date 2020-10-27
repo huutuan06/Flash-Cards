@@ -1,4 +1,4 @@
-package com.flashcards.flashcards.service.connect
+package com.flashcards.flashcards.api.connect
 
 import android.annotation.SuppressLint
 import okhttp3.OkHttpClient

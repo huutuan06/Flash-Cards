@@ -4,9 +4,9 @@ import android.app.Application
 import android.content.Context
 import androidx.room.Room
 import com.flashcards.flashcards.database.MainDatabase
-import com.flashcards.flashcards.service.connect.TrustHTTPS
-import com.flashcards.flashcards.service.repository.IService
-import com.flashcards.flashcards.service.repository.IServiceCoroutines
+import com.flashcards.flashcards.api.connect.TrustHTTPS
+import com.flashcards.flashcards.api.repository.IService
+import com.flashcards.flashcards.api.repository.IServiceCoroutines
 import com.flashcards.flashcards.util.APIConstant
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module

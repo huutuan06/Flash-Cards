@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.flashcards.flashcards.base.BaseViewModel
 import com.flashcards.flashcards.database.MainDatabase
 import com.flashcards.flashcards.database.entities.Vocabulary
-import com.flashcards.flashcards.service.repository.IServiceCoroutines
+import com.flashcards.flashcards.api.repository.IServiceCoroutines
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
