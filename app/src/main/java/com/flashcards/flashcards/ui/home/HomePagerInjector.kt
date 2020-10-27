@@ -5,6 +5,7 @@ import com.flashcards.flashcards.di.ViewModelKey
 import com.flashcards.flashcards.di.scope.FragmentScope
 import com.flashcards.flashcards.ui.flashcard.FlashCardInjector
 import com.flashcards.flashcards.ui.jetpack.JetpackInjector
+import com.flashcards.flashcards.ui.notification.NotificationInjector
 import com.flashcards.flashcards.ui.progress.ProgressInjector
 import dagger.Binds
 import dagger.Module
@@ -20,7 +21,8 @@ abstract class HomePagerInjector {
             HomePagerModule::class,
             FlashCardInjector::class,
             ProgressInjector::class,
-            JetpackInjector::class
+            JetpackInjector::class,
+            NotificationInjector::class
         ]
     )
     abstract fun provideHomePagerFragment(): HomePagerFragment

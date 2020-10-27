@@ -13,7 +13,7 @@ import dagger.multibindings.IntoMap
 abstract class ProgressInjector {
 
     @ContributesAndroidInjector(modules = [ProgressModule::class, ProgressPersistenceModule::class])
-    abstract fun provideProgressFragment(): ProgressFragment
+    abstract fun bindProgressFragment(): ProgressFragment
 }
 
 @Module(includes = [ProgressPersistenceModule::class])

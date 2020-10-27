@@ -1,29 +1,20 @@
 package com.flashcards.flashcards.ui.home
 
-import androidx.lifecycle.ViewModelProvider
 import com.flashcards.flashcards.R
 import com.flashcards.flashcards.base.BaseFragment
 import com.flashcards.flashcards.databinding.FragmentHomePagerBinding
-import com.flashcards.flashcards.ui.home.adapter.FLASH_CARD_PAGE_INDEX
-import com.flashcards.flashcards.ui.home.adapter.JECKPACK_PAGE_INDEX
-import com.flashcards.flashcards.ui.home.adapter.PROGRESS_SCREEN_INDEX
-import com.flashcards.flashcards.ui.home.adapter.PagerAdapter
-import com.flashcards.flashcards.viewmodel.ViewModelProviderFactory
+import com.flashcards.flashcards.ui.home.adapter.*
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.android.support.DaggerAppCompatActivity
-import javax.inject.Inject
+import kotlin.reflect.KClass
 
 class HomePagerFragment : BaseFragment<FragmentHomePagerBinding, HomePagerViewModel>() {
 
-    @Inject
-    lateinit var viewModelProviderFactory: ViewModelProviderFactory
+    override val layoutId: Int
+        get() = R.layout.fragment_home_pager
 
-    override fun getLayoutId(): Int = R.layout.fragment_home_pager
-
-    override fun getViewModel(): HomePagerViewModel =
-        ViewModelProvider(this, viewModelProviderFactory).get(
-            HomePagerViewModel::class.java
-        )
+    override val viewModelClass: KClass<HomePagerViewModel>
+        get() = HomePagerViewModel::class
 
     override fun initViews() {
         val tabLayout = binding.tabs
@@ -42,8 +33,9 @@ class HomePagerFragment : BaseFragment<FragmentHomePagerBinding, HomePagerViewMo
     private fun getTabIcon(position: Int): Int {
         return when (position) {
             FLASH_CARD_PAGE_INDEX -> R.drawable.garden_tab_selector
-            PROGRESS_SCREEN_INDEX -> R.drawable.plant_list_tab_selector
+            PROGRESS_PAGE_INDEX -> R.drawable.plant_list_tab_selector
             JECKPACK_PAGE_INDEX -> R.drawable.garden_tab_selector
+            NOTIFICATION_PAGE_INDEX -> R.drawable.plant_list_tab_selector
             else -> throw IndexOutOfBoundsException()
         }
     }
@@ -51,8 +43,9 @@ class HomePagerFragment : BaseFragment<FragmentHomePagerBinding, HomePagerViewMo
     private fun getTabTitle(position: Int): String? {
         return when (position) {
             FLASH_CARD_PAGE_INDEX -> getString(R.string.app_name)
-            PROGRESS_SCREEN_INDEX -> getString(R.string.progress_title)
+            PROGRESS_PAGE_INDEX -> getString(R.string.progress_title)
             JECKPACK_PAGE_INDEX -> getString(R.string.jetpack_title)
+            NOTIFICATION_PAGE_INDEX -> getString(R.string.notification_title)
             else -> throw IndexOutOfBoundsException()
         }
     }

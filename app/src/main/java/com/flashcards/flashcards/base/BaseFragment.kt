@@ -11,23 +11,40 @@ import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.ViewModelProvider
 import com.flashcards.flashcards.BR
 import com.flashcards.flashcards.R
 import com.flashcards.flashcards.util.FcException
 import com.flashcards.flashcards.util.transform
+import com.flashcards.flashcards.viewmodel.ViewModelProviderFactory
 import dagger.android.support.DaggerFragment
 import io.reactivex.disposables.CompositeDisposable
 import timber.log.Timber
+import javax.inject.Inject
+import kotlin.reflect.KClass
 
 abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFragment() {
 
-    private lateinit var mRootView: View
+    @Inject
+    lateinit var viewModelProviderFactory: ViewModelProviderFactory
 
+    private var bindingVariable : Int = BR.viewModel
+
+    /**
+     *@return layout resource id
+     */
+    @get:LayoutRes
+    protected abstract val layoutId: Int
+    protected abstract val viewModelClass: KClass<V>
+
+    /**
+     * Override for set view model
+     *
+     * @return view model instance
+     */
     protected val binding: T
         get() = _binding!!
     private var _binding: T? = null
-
-    private var bindingVariable : Int = BR.viewModel
 
     protected lateinit var mViewModel: V
 
@@ -47,7 +64,7 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFrag
         super.onCreate(savedInstanceState)
         Timber.tag("LifeCycle").d("${fragmentTag()} -- onCreate")
 
-        mViewModel = getViewModel()
+        mViewModel = ViewModelProvider(this ,viewModelProviderFactory).get(viewModelClass.java)
     }
 
     override fun onCreateView(
@@ -55,19 +72,18 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFrag
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
-        mRootView = binding.root
+        _binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
+        binding.setVariable(bindingVariable, mViewModel)
+        binding.lifecycleOwner = this
+
         initViews()
-        return mRootView
+
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Timber.tag("LifeCycle").d("${fragmentTag()} -- onViewCreated")
-
-        binding.setVariable(bindingVariable, mViewModel)
-        binding.lifecycleOwner = this
-        binding.executePendingBindings()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -155,11 +171,6 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFrag
             mToast?.show()
         }
     }
-
-    @LayoutRes
-    abstract fun getLayoutId(): Int
-
-    abstract fun getViewModel(): V
 
     open fun initViews() {}
 }

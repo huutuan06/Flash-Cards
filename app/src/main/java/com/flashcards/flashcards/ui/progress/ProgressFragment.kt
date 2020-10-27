@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.flashcards.flashcards.R
@@ -18,16 +17,18 @@ import com.flashcards.flashcards.ui.progress.model.Category
 import com.flashcards.flashcards.ui.progress.model.TestCase
 import com.flashcards.flashcards.ui.progress.model.TestType
 import com.flashcards.flashcards.util.NoScrollLinearLayoutManager
-import com.flashcards.flashcards.viewmodel.ViewModelProviderFactory
 import timber.log.Timber
-import javax.inject.Inject
 import kotlin.random.Random
+import kotlin.reflect.KClass
 
 class ProgressFragment : BaseFragment<FragmentProgressBinding, ProgressViewModel>(),
     ProgressNavigator {
 
-    @Inject
-    lateinit var viewModelProviderFactory: ViewModelProviderFactory
+    override val layoutId: Int
+        get() = R.layout.fragment_progress
+
+    override val viewModelClass: KClass<ProgressViewModel>
+        get() = ProgressViewModel::class
 
     private val testCaseProvider: TestCaseProvider
         get() = TestCaseProvider(context!!)
@@ -35,11 +36,6 @@ class ProgressFragment : BaseFragment<FragmentProgressBinding, ProgressViewModel
     lateinit var persistence: ProgressPersistence
 
     private lateinit var mTestFunctions: List<TestCase>
-
-    override fun getLayoutId(): Int = R.layout.fragment_progress
-
-    override fun getViewModel(): ProgressViewModel =
-        ViewModelProvider(this, viewModelProviderFactory).get(ProgressViewModel::class.java)
 
     override fun initViews() {
         setupRecyclerView()

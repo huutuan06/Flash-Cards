@@ -11,7 +11,7 @@ import dagger.multibindings.IntoMap
 abstract class JetpackInjector {
 
     @ContributesAndroidInjector(modules = [JetpackModule::class])
-    abstract fun provideJetPackFragment(): JetpackFragment
+    abstract fun bindJetPackFragment(): JetpackFragment
 }
 
 @Module

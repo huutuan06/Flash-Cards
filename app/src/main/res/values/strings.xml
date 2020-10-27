@@ -23,6 +23,7 @@
     <string name="flashcard_title">Flash cards</string>
     <string name="progress_title">Progress</string>
     <string name="jetpack_title">Jetpack</string>
+    <string name="notification_title">Notification</string>
 
     <!-- Technique Learned -->
     <string name="data_binding">Data Binding</string>

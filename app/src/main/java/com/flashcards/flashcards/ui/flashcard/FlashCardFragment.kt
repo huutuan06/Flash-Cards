@@ -1,7 +1,6 @@
 package com.flashcards.flashcards.ui.flashcard
 
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.flashcards.flashcards.R
@@ -9,21 +8,19 @@ import com.flashcards.flashcards.base.BaseFragment
 import com.flashcards.flashcards.databinding.FragmentFlashcardBinding
 import com.flashcards.flashcards.ui.flashcard.adapter.CardAdapter
 import com.flashcards.flashcards.ui.view.LoadingDialog
-import com.flashcards.flashcards.viewmodel.ViewModelProviderFactory
 import javax.inject.Inject
+import kotlin.reflect.KClass
 
 class FlashCardFragment : BaseFragment<FragmentFlashcardBinding, FlashCardViewModel>() {
 
     @Inject
-    lateinit var viewModelProviderFactory: ViewModelProviderFactory
-
-    @Inject
     lateinit var loadingDialog: LoadingDialog
 
-    override fun getLayoutId(): Int = R.layout.fragment_flashcard
+    override val layoutId: Int
+        get() = R.layout.fragment_flashcard
 
-    override fun getViewModel(): FlashCardViewModel =
-        ViewModelProvider(this, viewModelProviderFactory).get(FlashCardViewModel::class.java)
+    override val viewModelClass: KClass<FlashCardViewModel>
+        get() = FlashCardViewModel::class
 
     private lateinit var cardAdapter: CardAdapter
 

@@ -11,7 +11,7 @@ import dagger.multibindings.IntoMap
 abstract class FlashCardInjector {
 
     @ContributesAndroidInjector(modules = [FlashCardModule::class])
-    abstract fun provideFlashCardFragment(): FlashCardFragment
+    abstract fun bindFlashCardFragment(): FlashCardFragment
 }
 
 @Module
