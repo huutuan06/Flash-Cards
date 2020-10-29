@@ -40,6 +40,14 @@ class JetpackFragment : BaseFragment<FragmentJetpackBinding, JetpackViewModel>()
                 Glide.with(this).load(it.image).into(img_voca)
             }
         })
+
+        compositeDisposable.add(mViewModel.observableAction.subscribe {
+            when (it) {
+                is JetpackViewModel.Event.Error -> {
+                    handleException(it.throwable)
+                }
+            }
+        })
     }
 
     override fun onResume() {
