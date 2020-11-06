@@ -12,29 +12,16 @@ class PushNotificationService : FirebaseMessagingService() {
     fun notifyNewOfferArrive(
         context: Context,
         title: String? = null,
-        content: String? = null,
-        evidenceId: Long = -1)
+        content: String? = null)
     {
-        showNotificationOffer(context, title, content, evidenceId)
-//        quoteSubject.onNext(evidenceId)
+        showNotificationOffer(context, title, content)
     }
 
     private fun showNotificationOffer(
         context: Context,
         title: String? = null,
-        content: String? = null,
-        evidenceId: Long = -1)
+        content: String? = null)
     {
-//        NotificationUtils.cancelUploadedNotification(context)
-
-//        val pendingIntent =
-//            Intent(context, MainActivity::class.java)
-//                .apply {
-//                    putExtra(ARG_EVIDENCE_ID, evidenceId)
-//                }
-//                .let {
-//                    PendingIntent.getActivity(context, 0, it, 0)
-//                }
 
         NotificationUtils.showDemoNotification2(
             context,
@@ -49,8 +36,8 @@ class PushNotificationService : FirebaseMessagingService() {
         Timber.d("onMessageReceived -- ${p0.data}")
 
         p0.data.let { data ->
-            data["id"]?.toLongOrNull()?.let { evidenceId ->
-                notifyNewOfferArrive(context = this, evidenceId = evidenceId)
+            data["id"]?.toLongOrNull()?.let {
+                notifyNewOfferArrive(context = this)
             }
         }
         NotificationUtils.showDemoNotification1(
@@ -59,6 +46,6 @@ class PushNotificationService : FirebaseMessagingService() {
 
     override fun onNewToken(token: String) {
         super.onNewToken(token)
-//        Timber.d("onNewToken -- ${token.toJson()}")
+        //TODO
     }
 }
