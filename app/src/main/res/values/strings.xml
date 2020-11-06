@@ -66,10 +66,15 @@
 
     <string name="result_summary">%d Passed, %d Failed, %d TBD</string>
 
-    <!-- Progress messages-->
+    <!--Progress messages-->
     <string name="all_progresses_already_passed">All progresses are already passed.</string>
 
     <string name="label_from_server">From Server</string>
     <string name="label_from_local">From Local</string>
     <string name="get_data">Get Data</string>
+
+    <!--Firebase Message-->
+    <string name="default_notification_channel_id">01</string>
+    <string name="offer_title">Title</string>
+    <string name="offer_content">Content</string>
 </resources>

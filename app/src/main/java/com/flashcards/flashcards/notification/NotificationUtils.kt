@@ -6,6 +6,7 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.media.AudioManager
 import android.net.Uri
@@ -20,7 +21,7 @@ import com.flashcards.flashcards.util.ifNullOrEmpty
 object NotificationUtils {
 
     private const val NOTIFICATION_ID_DEMO_1 = 11
-    private const val NOTIFICATION_ID_DEMO_2 = 11
+    private const val NOTIFICATION_ID_DEMO_2 = 22
 
     fun showDemoNotification1(
         context: Context,
@@ -61,9 +62,9 @@ object NotificationUtils {
         }
 
         val notificationBuilder = NotificationCompat.Builder(context, ntfChannel.getId())
-            .setSmallIcon(R.drawable.ic_circular_success)
-            .setColor(context.resources.getColor(R.color.colorPrimary))
+            .setSmallIcon(R.mipmap.ic_launcher)
             .setContentTitle(title.ifNullOrEmpty(context.getString(R.string.app_name)))
+            .setLargeIcon(BitmapFactory.decodeResource(context.resources, R.mipmap.ic_launcher))
             .setContentText(content)
             .setDefaults(Notification.DEFAULT_VIBRATE)
             .setSound(getNotificationSoundUri(context, ntfChannel), AudioManager.STREAM_NOTIFICATION)
