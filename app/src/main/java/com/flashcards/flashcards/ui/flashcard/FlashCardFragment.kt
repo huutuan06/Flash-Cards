@@ -1,5 +1,7 @@
 package com.flashcards.flashcards.ui.flashcard
 
+import android.view.Menu
+import android.view.MenuInflater
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView

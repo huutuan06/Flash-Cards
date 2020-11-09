@@ -56,7 +56,6 @@
                         android:textSize="@dimen/text_app_title"
                         />
                 </androidx.appcompat.widget.Toolbar>
-
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
             <com.google.android.material.tabs.TabLayout
@@ -70,7 +69,5 @@
                 />
 
         </com.google.android.material.appbar.AppBarLayout>
-
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
 </layout>

@@ -9,6 +9,15 @@
         <item name="colorOnPrimary">@color/store_clicked</item>
     </style>
 
+    <style name="AppThemeTest" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/black_overlay</item>
+        <item name="colorPrimaryDark">@color/black_overlay_dark</item>
+        <item name="colorAccent">@color/white</item>
+        <item name="colorOnPrimary">@color/store_clicked</item>
+        <item name="android:windowBackground">@color/black</item>
+    </style>
+
     <style name="Theme.Sunflower.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
 
     <style name="Text" />

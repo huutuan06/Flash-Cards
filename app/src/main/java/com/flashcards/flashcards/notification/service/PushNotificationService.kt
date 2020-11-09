@@ -22,7 +22,6 @@ class PushNotificationService : FirebaseMessagingService() {
         title: String? = null,
         content: String? = null)
     {
-
         NotificationUtils.showDemoNotification2(
             context,
             title ?: context.getString(R.string.offer_title),

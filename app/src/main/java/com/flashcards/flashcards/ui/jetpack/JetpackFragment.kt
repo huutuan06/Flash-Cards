@@ -6,6 +6,7 @@ import com.flashcards.flashcards.R
 import com.flashcards.flashcards.base.BaseFragment
 import com.flashcards.flashcards.databinding.FragmentJetpackBinding
 import com.flashcards.flashcards.ui.view.LoadingDialog
+import com.flashcards.flashcards.util.preference.SettingPreference
 import kotlinx.android.synthetic.main.fragment_jetpack.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

@@ -1,10 +1,10 @@
 package com.flashcards.flashcards.ui.flashcard
 
 import androidx.lifecycle.MutableLiveData
+import com.flashcards.flashcards.api.repository.IService
 import com.flashcards.flashcards.base.BaseViewModel
 import com.flashcards.flashcards.database.MainDatabase
 import com.flashcards.flashcards.database.entities.Vocabulary
-import com.flashcards.flashcards.api.repository.IService
 import com.flashcards.flashcards.util.applyIOScheduler
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject

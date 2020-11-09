@@ -77,4 +77,37 @@
     <string name="default_notification_channel_id">01</string>
     <string name="offer_title">Title</string>
     <string name="offer_content">Content</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_settings">Settings</string>
+
+    <!--preference key-->
+    <string name="pref_key_debug_mode">pref_key_debug_mode</string>
+    <string name="pref_key_hide_utilities">pref_key_hide_utilities</string>
+    <string name="pref_key_disable_video_upload">pref_key_disable_video_upload</string>
+    <string name="pref_key_automatic_rate_video">pref_key_automatic_rate_video</string>
+
+    <string name="pref_key_flip_camera_upside_down">pref_key_flip_camera_upside_down</string>
+    <string name="pref_key_flip_ml_kit_frame">pref_key_flip_ml_kit_frame</string>
+
+    <string name="pref_key_trust_epa">pref_key_trust_epa</string>
+
+    <string name="pref_key_fast_mode">pref_key_fast_mode</string>
+
+    <string name="pref_key_skip_tutorial_video">pref_key_skip_tutorial_video</string>
+    <string name="pref_key_interrupt_voice">pref_key_interrupt_voice</string>
+    <string name="pref_key_show_bubble_simulator">pref_key_show_bubble_simulator</string>
+    <string name="pref_key_show_green_line">pref_key_show_green_line</string>
+    <string name="pref_key_show_guide_shape">pref_key_show_guide_shape</string>
+
+    <string name="pref_key_skip_test_in_order">pref_key_skip_test_in_order</string>
+    <string name="pref_key_use_qr_code">pref_key_use_qr_code</string>
+    <string name="pref_key_bargain_on_deny">pref_key_bargain_on_deny</string>
+
+    <string name="pref_key_quick_tests">pref_key_quick_tests</string>
+
+    <string name="pref_key_adjust_volume_guideline">pref_key_adjust_volume_guideline</string>
+    <string name="pref_key_turn_off_lady_voice">pref_key_turn_off_lady_voice</string>
+    <string name="pref_key_hide_evaluate">pref_key_hide_evaluate</string>
+    <!--preference key end-->
 </resources>

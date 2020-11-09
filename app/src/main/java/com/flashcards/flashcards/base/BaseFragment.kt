@@ -4,9 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
@@ -109,6 +107,21 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFrag
     override fun onPause() {
         Timber.tag("LifeCycle").d("${fragmentTag()} -- onPause")
         super.onPause()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        Timber.tag("LifeCycle").d("${fragmentTag()} -- onCreateOptionsMenu")
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        super.onPrepareOptionsMenu(menu)
+        Timber.tag("LifeCycle").d("${fragmentTag()} -- onPrepareOptionsMenu")
+    }
+
+    override fun onDestroyOptionsMenu() {
+        super.onDestroyOptionsMenu()
+        Timber.tag("LifeCycle").d("${fragmentTag()} -- onDestroyOptionsMenu")
     }
 
     override fun onStop() {

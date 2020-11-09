@@ -1,0 +1,105 @@
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="Setttings"
+    >
+
+    <PreferenceCategory
+        android:title="Homepage">
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="@string/pref_key_hide_utilities"
+            android:title="Hide all utilities on the Homepage."
+            />
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="@string/pref_key_hide_evaluate"
+            android:title="Hide Evaluate button on the Homepage."
+            />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Sell">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="@string/pref_key_use_qr_code"
+            android:title="Use QR Code"
+            />
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="@string/pref_key_bargain_on_deny"
+            android:summary="When this option is off, if the user turns down offer, take them to home page."
+            android:title="Always Be Closing"
+            />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Camera">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="@string/pref_key_turn_off_lady_voice"
+            android:title="Turn off the lady's voice during recording."
+            />
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="@string/pref_key_interrupt_voice"
+            android:title="Instruction voice interruptable"
+            />
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="@string/pref_key_flip_camera_upside_down"
+            android:title="Flip camera upside down"
+            />
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="@string/pref_key_flip_ml_kit_frame"
+            android:summary="Text will be read upside down in contrast to camera display."
+            android:title="Text recognition upside down"
+            />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Phone Test">
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="@string/pref_key_quick_tests"
+            android:title="Quick Tests"
+            />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="General">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="@string/pref_key_fast_mode"
+            android:title="Fast Mode"
+            />
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="@string/pref_key_trust_epa"
+            android:title="Trust EPA"
+            />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="About">
+
+        <Preference
+            android:summary="@string/versionName"
+            android:title="Version"
+            />
+    </PreferenceCategory>
+</PreferenceScreen>
